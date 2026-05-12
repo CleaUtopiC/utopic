@@ -133,12 +133,18 @@ initCarousel({ trackId: 'realTrack',   prevId: 'realPrev',   nextId: 'realNext',
 initCarousel({ trackId: 'presseTrack', prevId: 'pressePrev', nextId: 'presseNext', dotsId: 'presseDots', forceVisible: 1, autoplay: 6000 });
 
 /* ---- Scroll to top ---- */
-const scrollTopBtn = document.getElementById('scrollTop');
-if (scrollTopBtn) {
+const scrollBtn = document.getElementById('scrollTop');
+if (scrollBtn) {
   window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('is-visible', window.scrollY > 300);
+    if (window.scrollY > 300) {
+      scrollBtn.style.opacity = '1';
+      scrollBtn.style.visibility = 'visible';
+    } else {
+      scrollBtn.style.opacity = '0';
+      scrollBtn.style.visibility = 'hidden';
+    }
   }, { passive: true });
-  scrollTopBtn.addEventListener('click', () => {
+  scrollBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }

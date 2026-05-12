@@ -42,7 +42,7 @@
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: top center;
-  border-radius: 120px 0 120px 120px;
+  border-radius: 20px;
   display: block;
   color: transparent;
 }
@@ -131,9 +131,9 @@
   margin-bottom: 2rem;
 }
 
-/* Colonne expériences — fond or */
+/* Colonne expériences — fond crème */
 .ap-skills__col--exp {
-  background: var(--color-gold);
+  background: var(--color-cream);
   padding: 3rem 2.5rem 3rem 2rem;
 }
 .ap-skills__col--exp .ap-skills__col-title { color: var(--color-navy); }
@@ -264,7 +264,7 @@
   .ap-intro__portrait-wrap { order: -1; }
   .ap-intro__portrait {
     width: min(260px, 80%);
-    border-radius: 80px 0 80px 80px;
+    border-radius: 20px;
   }
 
   .formation-list { grid-template-columns: 1fr; }

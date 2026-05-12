@@ -830,6 +830,28 @@ ul { list-style: none; }
 
 
 /* =============================================
+   NAVIGATION INTER-CATÉGORIES (sous-pages portfolio)
+   ============================================= */
+.portfolio-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 48px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.portfolio-nav__link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-navy);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.portfolio-nav__link:hover { color: var(--color-gold); }
+
+
+/* =============================================
    RESPONSIVE
    ============================================= */
 @media (max-width: 768px) {

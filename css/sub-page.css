@@ -67,7 +67,7 @@
 /* ---- Galerie projets ---- */
 .sub-gallery {
   padding: 5rem 2rem;
-  background: var(--color-white);
+  background: #cec0b3;
 }
 .sub-gallery__inner {
   max-width: var(--max-w);
