@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Utopi'C — Graphiste & Communicante Freelance</title>
-  <meta name="description" content="Cléa Laubier — Graphiste et communicante freelance. Identité visuelle, communication print et digitale. Crée avec passion, communiquez avec émotion." />
+  <title>Utopi'C — Chargée de communication 360°</title>
+  <meta name="description" content="Cléa Laubier — Chargée de communication 360°. Identité visuelle, communication print et digitale. Crée avec passion, communiquez avec émotion." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=5" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css?v=10" />
 </head>
 <body>
 
@@ -68,7 +68,7 @@
         </nav>
 
         <div class="header-right">
-          <a href="contact.html" class="btn-contact-bubble">Un projet&nbsp;?</a>
+          <a href="contact.html" class="btn-contact-bubble">Contact</a>
           <button class="header-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -84,16 +84,11 @@
     <!-- ======= HERO ======= -->
     <section class="hero">
       <div class="hero__inner">
-        <div class="hero__text">
-          <p class="hero__tagline">
-            Crée avec passion,<br />Communiquez avec émotion.
-          </p>
-          <p class="hero__subtitle">Ton projet, ma créativité,<br />un résultat sur-mesure</p>
-          <a href="contact.html" class="btn btn--gold-outline">Un projet&nbsp;? Parlons-en&nbsp;!</a>
-        </div>
-        <div class="hero__photo-wrap">
-          <img src="assets/images/portrait-clea.png" alt="Cléa Laubier — Graphiste freelance" class="hero__photo" loading="eager" />
-        </div>
+        <h1 class="hero__tagline">
+          Crée avec passion,<br />Communiquez avec émotion.
+        </h1>
+        <p class="hero__subtitle">Ton projet, ma créativité, un résultat sur-mesure</p>
+        <a href="contact.html" class="hero__cta">Un projet&nbsp;? Parlons-en&nbsp;!</a>
       </div>
     </section>
 
@@ -116,19 +111,15 @@
             <ul class="carousel__track" id="realTrack">
               <li class="carousel__slide">
                 <img src="assets/images/carousel-1.png" alt="Coiffure des Halles — identité visuelle" loading="lazy" />
-                <span class="carousel__caption">Coiffure des Halles</span>
               </li>
               <li class="carousel__slide">
                 <img src="assets/images/carousel-2.jpg" alt="Direct Végétal — réseaux sociaux" loading="lazy" />
-                <span class="carousel__caption">Direct Végétal</span>
               </li>
               <li class="carousel__slide">
                 <img src="assets/images/carousel-3.png" alt="Direct Végétal — brochure" loading="lazy" />
-                <span class="carousel__caption">Direct Végétal — Brochure</span>
               </li>
               <li class="carousel__slide">
                 <img src="assets/images/carousel-4.jpg" alt="Letizia Dulier — dossier de sponsoring" loading="lazy" />
-                <span class="carousel__caption">Letizia Dulier</span>
               </li>
             </ul>
           </div>
@@ -149,7 +140,7 @@
 
         <div class="prestations__header">
           <span class="section-label">Prestations</span>
-          <h2 class="prestations__title">Imaginer,<br />Concevoir,<br />Rayonner.</h2>
+          <h2 class="prestations__title">Imaginer, concevoir ensemble<br />Rayonner.</h2>
         </div>
 
         <div class="prestations__stagger">
@@ -350,11 +341,15 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18l6-6-6-6"/></svg>
           </button>
 
-          <div class="carousel__dots" id="presseDots" role="tablist" aria-label="Navigation presse"></div>
         </div>
 
       </div>
     </section>
+
+    <!-- Dots de navigation — sur fond blanc, hors zone verte -->
+    <div class="experiences-dots-bar">
+      <div class="carousel__dots" id="presseDots" role="tablist" aria-label="Navigation presse"></div>
+    </div>
 
   </main>
 
@@ -365,8 +360,8 @@
       <div class="footer-main__inner">
 
         <div class="footer-brand">
-          <img src="assets/logos/logo-utopic.png" alt="Utopi'C" class="footer-brand__logo" />
-          <p class="footer-brand__tagline">Crée avec passion / Communiquez avec émotion.</p>
+          <img src="assets/logos/logo-utopic-mini.png" alt="Utopi'C" class="footer-brand__logo" />
+          <p class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
           <div class="footer-brand__socials">
             <a href="https://www.instagram.com/utopi_c_/" target="_blank" rel="noopener" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -390,13 +385,17 @@
           <p class="footer-nav-block__title">Navigation</p>
           <ul class="footer-nav-block__cols">
             <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="identite-visuelle.html">Identité visuelle</a></li>
+            <li><a href="#">Blog / FAQ</a></li>
+            <li><a href="a-propos.html">À propos</a></li>
             <li><a href="communication-print.html">Print</a></li>
-            <li><a href="communication-digitale.html">Digitale</a></li>
-            <li><a href="contact.html">Contact</a></li>
             <li><a href="mentions-legales.html">Mentions légales</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="communication-digitale.html">Digitale</a></li>
+            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li></li>
+            <li><a href="#">CGV</a></li>
           </ul>
         </div>
 

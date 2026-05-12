@@ -42,7 +42,7 @@
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: top center;
-  border-radius: 0 120px 120px 0;
+  border-radius: 120px 0 120px 120px;
   display: block;
   color: transparent;
 }
@@ -264,7 +264,7 @@
   .ap-intro__portrait-wrap { order: -1; }
   .ap-intro__portrait {
     width: min(260px, 80%);
-    border-radius: 0 80px 80px 0;
+    border-radius: 80px 0 80px 80px;
   }
 
   .formation-list { grid-template-columns: 1fr; }
