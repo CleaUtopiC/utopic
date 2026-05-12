@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=10" />
+  <link rel="stylesheet" href="css/style.css?v=11" />
 </head>
 <body>
 
@@ -175,13 +175,16 @@
     </section>
 
     <!-- ======= EXPÉRIENCES / PRESSE ======= -->
-    <section class="experiences" id="experiences">
-      <div class="experiences__inner">
-
+    <div class="experiences-intro">
+      <div class="experiences-intro__inner">
         <header class="section-header">
           <span class="section-label">Expériences</span>
           <h2 class="section-title">Ils racontent mon univers&nbsp;!</h2>
         </header>
+      </div>
+    </div>
+    <section class="experiences" id="experiences">
+      <div class="experiences__inner">
 
         <div class="carousel" id="carouselPresse" role="region" aria-label="Carrousel presse">
           <button class="carousel__btn carousel__btn--prev" id="pressePrev" aria-label="Article précédent">
@@ -407,6 +410,10 @@
     </div>
 
   </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Retour en haut">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
   <script src="js/main.js"></script>
 </body>

@@ -131,3 +131,14 @@ function initCarousel({ trackId, prevId, nextId, dotsId, forceVisible, autoplay 
 /* ---- Init carousels ---- */
 initCarousel({ trackId: 'realTrack',   prevId: 'realPrev',   nextId: 'realNext',   dotsId: 'realDots' });
 initCarousel({ trackId: 'presseTrack', prevId: 'pressePrev', nextId: 'presseNext', dotsId: 'presseDots', forceVisible: 1, autoplay: 6000 });
+
+/* ---- Scroll to top ---- */
+const scrollTopBtn = document.getElementById('scrollTop');
+if (scrollTopBtn) {
+  window.addEventListener('scroll', () => {
+    scrollTopBtn.classList.toggle('is-visible', window.scrollY > 300);
+  }, { passive: true });
+  scrollTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
