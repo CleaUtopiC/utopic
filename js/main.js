@@ -97,15 +97,17 @@ function initCarousel({ trackId, prevId, nextId, dotsId, forceVisible, autoplay 
     if (next) next.disabled = false;
   }
 
-  prev?.addEventListener('click', () => goTo(current - 1));
-  next?.addEventListener('click', () => goTo(current + 1));
+  let resetAutoplay = null;
+
+  prev?.addEventListener('click', () => { goTo(current - 1); resetAutoplay?.(); });
+  next?.addEventListener('click', () => { goTo(current + 1); resetAutoplay?.(); });
 
   /* Touch swipe */
   let touchStartX = 0;
   track.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
   track.addEventListener('touchend', (e) => {
     const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+    if (Math.abs(diff) > 50) { goTo(current + (diff > 0 ? 1 : -1)); resetAutoplay?.(); }
   });
 
   window.addEventListener('resize', () => {
@@ -120,20 +122,21 @@ function initCarousel({ trackId, prevId, nextId, dotsId, forceVisible, autoplay 
   /* Autoplay */
   if (autoplay) {
     const wrap = track.closest('.carousel');
-    let timer = setInterval(() => goTo(current + 1), autoplay);
+    let timer;
+    function startTimer() { timer = setInterval(() => goTo(current + 1), autoplay); }
+    resetAutoplay = function() { clearInterval(timer); startTimer(); };
+    startTimer();
     wrap?.addEventListener('mouseenter', () => clearInterval(timer), { passive: true });
-    wrap?.addEventListener('mouseleave', () => {
-      timer = setInterval(() => goTo(current + 1), autoplay);
-    }, { passive: true });
+    wrap?.addEventListener('mouseleave', startTimer, { passive: true });
   }
 }
 
 /* ---- Init carousels ---- */
-initCarousel({ trackId: 'realTrack',   prevId: 'realPrev',   nextId: 'realNext',   dotsId: 'realDots' });
+initCarousel({ trackId: 'realTrack',   prevId: 'realPrev',   nextId: 'realNext',   dotsId: 'realDots', autoplay: 4500 });
 initCarousel({ trackId: 'presseTrack', prevId: 'pressePrev', nextId: 'presseNext', dotsId: 'presseDots', forceVisible: 1, autoplay: 6000 });
 
 /* ---- Scroll to top ---- */
-const scrollTopBtn = document.getElementById('scrollTop');
+var scrollTopBtn = document.getElementById('scrollTop');
 if (scrollTopBtn) {
   window.addEventListener('scroll', function() {
     if (window.scrollY > 300) {

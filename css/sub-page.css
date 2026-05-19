@@ -3,15 +3,15 @@
    ============================================= */
 
 
-/* ---- Hero ---- */
-.sub-hero {
-  padding-top: calc(var(--header-h) + 4rem);
-  padding-bottom: 5rem;
+/* ---- Lien retour (au-dessus du hero) ---- */
+.sub-hero__back-wrap {
+  padding-top: calc(var(--header-h) + 1.2rem);
+  padding-bottom: 1.2rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  background: var(--color-cream);
+  background: var(--color-white);
 }
-.sub-hero__inner {
+.sub-hero__back-inner {
   max-width: var(--max-w);
   margin: 0 auto;
 }
@@ -25,17 +25,30 @@
   text-transform: uppercase;
   color: var(--color-navy);
   opacity: 0.5;
-  margin-bottom: 2.5rem;
   transition: opacity var(--transition), color var(--transition);
 }
 .sub-hero__back:hover { opacity: 1; color: var(--color-gold); }
 
+/* ---- Hero ---- */
+.sub-hero {
+  padding-top: 4rem;
+  padding-bottom: 5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background: #cec0b3;
+}
+.sub-hero__inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
 .sub-hero__title-box {
-  display: inline-block;
-  background: var(--color-navy);
-  padding: 2.5rem 3.5rem 2rem;
-  margin-bottom: 2rem;
-  border-radius: 2px;
+  display: block;
+  background: transparent;
+  padding: 3rem 0 3rem;
+  margin-bottom: 0;
+  border-radius: 0;
+  max-width: 720px;
 }
 .sub-hero__title {
   font-family: var(--font-display);
@@ -50,7 +63,8 @@
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 1.8rem;
   margin-bottom: 1.5rem;
   max-width: 680px;
   line-height: 1.75;
@@ -58,8 +72,8 @@
 .sub-hero__body {
   font-size: 0.92rem;
   line-height: 1.85;
-  color: var(--color-text);
-  opacity: 0.75;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 1;
   max-width: 660px;
 }
 
@@ -74,15 +88,22 @@
   margin: 0 auto;
 }
 .sub-gallery__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: flex;
   gap: 0.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0.25rem;
 }
+.sub-gallery__grid::-webkit-scrollbar { display: none; }
 .sub-gallery__item {
+  flex: 0 0 calc(25% - 0.5625rem);
   aspect-ratio: 3/4;
   overflow: hidden;
   border-radius: 4px;
   background: var(--color-cream);
+  scroll-snap-align: start;
 }
 .sub-gallery__item img {
   width: 100%;
@@ -205,7 +226,7 @@
   opacity: 0.88;
 }
 .sub-avantages__list li::before {
-  content: '✦';
+  content: '✿';
   color: var(--color-gold);
   font-size: 0.72rem;
   flex-shrink: 0;
@@ -291,7 +312,7 @@
   opacity: 0.82;
 }
 .sub-pourquoi__list li::before {
-  content: '✦';
+  content: '✿';
   color: var(--color-gold);
   font-size: 0.72rem;
   flex-shrink: 0;
@@ -312,11 +333,34 @@
 }
 
 
+/* ---- Couleurs avantages par sous-page ---- */
+.page-iv    .sub-avantages__col--green { background: #4A5D52; }
+.page-print .sub-avantages__col--green { background: #4A5D52; }
+.page-digital .sub-avantages__col--green { background: #4A5D52; }
+
+/* ---- Hero page-iv : fond blanc + bloc-titre taupe ---- */
+.page-iv .sub-hero { background: var(--color-white); }
+.page-iv .sub-hero__title-box { background: #cec0b3; padding: 3rem 2.5rem; border-radius: 4px; }
+
+/* ---- Hero print + digital : fond blanc, texte centré navy ---- */
+.page-print .sub-hero,
+.page-digital .sub-hero { background: var(--color-white); text-align: center; }
+.page-print .sub-hero__title-box,
+.page-digital .sub-hero__title-box { background: transparent; }
+.page-print .sub-hero__title,
+.page-digital .sub-hero__title { color: var(--color-navy); }
+.page-print .sub-hero__subtitle,
+.page-digital .sub-hero__subtitle { color: var(--color-gold); opacity: 1; }
+.page-print .sub-hero__body,
+.page-digital .sub-hero__body { color: var(--color-navy); opacity: 0.75; }
+
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
-  .sub-hero { padding-top: calc(var(--header-main-h) + 2.5rem); }
+  .sub-hero__back-wrap { padding-top: calc(var(--header-main-h) + 0.8rem); padding-bottom: 0.8rem; }
+  .sub-hero { padding-top: 2.5rem; }
   .sub-hero__title-box { padding: 1.8rem 2rem 1.5rem; }
-  .sub-gallery__grid { grid-template-columns: repeat(2, 1fr); }
+  .sub-gallery__item { flex: 0 0 75vw; }
   .sub-avantages__grid { grid-template-columns: 1fr; }
   .sub-avantages__col--green { padding: 2.5rem 1.8rem; }
   .sub-avantages__col--cream { padding: 2.5rem 1.8rem; }
@@ -324,5 +368,5 @@
   .sub-logos__strip { gap: 1.5rem; }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .sub-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+  .sub-gallery__item { flex: 0 0 calc(33.33% - 0.5rem); }
 }

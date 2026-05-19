@@ -103,6 +103,16 @@
   background: var(--color-cream);
   flex: 1;
 }
+/* Couleurs par carte = même que les labels prestations sur l'accueil */
+.portfolio-hub__grid .hub-card:nth-child(1) .hub-card__body { background: var(--color-gold); }
+.portfolio-hub__grid .hub-card:nth-child(2) .hub-card__body { background: var(--color-coral); }
+.portfolio-hub__grid .hub-card:nth-child(3) .hub-card__body { background: var(--color-teal); }
+.portfolio-hub__grid .hub-card:nth-child(1) .hub-card__title,
+.portfolio-hub__grid .hub-card:nth-child(1) .hub-card__sub,
+.portfolio-hub__grid .hub-card:nth-child(2) .hub-card__title,
+.portfolio-hub__grid .hub-card:nth-child(2) .hub-card__sub,
+.portfolio-hub__grid .hub-card:nth-child(3) .hub-card__title,
+.portfolio-hub__grid .hub-card:nth-child(3) .hub-card__sub { color: var(--color-white); opacity: 1; }
 .hub-card__title {
   font-family: var(--font-display);
   font-size: 1.3rem;
@@ -137,7 +147,7 @@
   right: 0;
   height: 52%;
   background: var(--color-navy);
-  clip-path: ellipse(120% 100% at 50% 100%);
+  clip-path: ellipse(140% 100% at 65% 100%);
   z-index: 0;
 }
 
