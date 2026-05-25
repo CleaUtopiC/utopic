@@ -243,6 +243,95 @@
 }
 
 
+/* Expériences - À propos */
+.exp-box {
+  background: var(--color-gold, #e9a708);
+  color: var(--color-navy, #12263e);
+  border-radius: 14px;
+  padding: 2rem;
+  font-family: var(--font-body, 'Montserrat', sans-serif);
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 400;
+}
+.exp-box li,
+.exp-box p,
+.exp-box .job-company,
+.exp-box .job-date {
+  font-weight: 400;
+  color: #12263e;
+}
+.exp-box .job { margin-bottom: 1.75rem; }
+.exp-box .job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 0.2rem;
+}
+.exp-box .job-title {
+  font-family: var(--font-display, 'Bodoni Moda', serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-navy, #12263e);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.exp-box .job-company {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #12263e;
+}
+.exp-box .job-date {
+  font-size: 12px;
+  font-weight: 500;
+  color: #12263e;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+.exp-box .job-type {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 9px;
+  border-radius: 99px;
+  background: var(--color-navy, #12263e);
+  color: var(--color-gold, #e9a708);
+}
+.exp-box .section-label {
+  display: block;
+  font-family: var(--font-display, 'Bodoni Moda', serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: #12263e;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 1.2rem 0 0.4rem;
+  opacity: 1;
+  border-bottom: 1px solid rgba(18,38,62,0.2);
+  padding-bottom: 4px;
+}
+.exp-box .section-label + ul { margin-top: 0.3rem; }
+.exp-box ul { list-style: disc; margin: 0.3rem 0 0; padding-left: 1.4rem; }
+.exp-box li { list-style-type: disc; margin-bottom: 6px; font-size: 13.5px; line-height: 1.55; }
+.exp-box li::marker { color: #12263e; }
+.exp-box hr { border: none; border-top: 1.5px solid rgba(18,38,62,0.2); margin: 1.5rem 0; }
+.exp-box .mini-jobs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 0.5rem;
+}
+.exp-box .mini-card {
+  background: rgba(18,38,62,0.08);
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+}
+.exp-box .mini-card .role { font-weight: 700; font-size: 13px; }
+.exp-box .mini-card .org { font-size: 12px; opacity: 0.65; margin-top: 2px; }
+
+
 /* --- CTA Parcours --- */
 .ap-skills__cta {
   text-align: center;
