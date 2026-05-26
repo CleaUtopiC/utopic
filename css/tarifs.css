@@ -7,7 +7,7 @@
   --green:  #334b35;
   --teal:   #00756f;
   --coral:  #fe6751;
-  --yellow: #c9a708;
+  --yellow: #e9a708;
   --beige:  #ccc0b3;
   --cream:  #f5eee6;
   --white:  #ffffff;
@@ -81,8 +81,8 @@
 .card-essentiel .card-header { background: var(--yellow); }
 .card-essentiel .card-header .formula-name { color: var(--navy); }
 .card-essentiel .card-header .formula-sub { color: rgba(18,38,62,0.6); }
-.card-excellence .card-header { background: var(--navy); }
-.card-signature .card-header { background: var(--coral); }
+.card-excellence .card-header { background: var(--coral); }
+.card-signature .card-header { background: var(--teal); }
 
 .card-body {
   background: var(--white);
@@ -145,9 +145,9 @@
   color: var(--navy);
   line-height: 1.1;
 }
-.card-essentiel .price { color: var(--teal); }
-.card-excellence .price { color: var(--navy); }
-.card-signature .price { color: var(--coral); }
+.card-essentiel .price { color: var(--yellow); }
+.card-excellence .price { color: var(--coral); }
+.card-signature .price { color: var(--teal); }
 
 .price sup { font-size: 0.9rem; vertical-align: super; }
 .ttc {
