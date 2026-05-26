@@ -78,7 +78,9 @@
   display: block;
 }
 
-.card-essentiel .card-header { background: var(--teal); }
+.card-essentiel .card-header { background: var(--yellow); }
+.card-essentiel .card-header .formula-name { color: var(--navy); }
+.card-essentiel .card-header .formula-sub { color: rgba(18,38,62,0.6); }
 .card-excellence .card-header { background: var(--navy); }
 .card-signature .card-header { background: var(--coral); }
 

@@ -480,7 +480,8 @@ ul { list-style: none; }
 /* Titre et sous-titre scoped */
 .realisations .section-title { font-size: 47px; }
 .realisations .section-sub { font-size: 28px; color: #c0c0c0; opacity: 1; }
-.realisations .section-header { display: block; }
+.realisations .section-header { display: block; margin-bottom: 3.5rem; }
+.realisations .section-label { font-size: 0.85rem; }
 
 /* --- Carousel --- */
 .carousel { position: relative; }

@@ -266,10 +266,11 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-wrap: nowrap;
+  gap: 12px;
   margin-bottom: 0.2rem;
 }
+.exp-box .job-title { flex: 1; min-width: 0; }
 .exp-box .job-title {
   font-family: var(--font-display, 'Bodoni Moda', serif);
   font-size: 20px;
