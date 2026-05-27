@@ -133,74 +133,93 @@
    ============================================= */
 .portfolio-social {
   position: relative;
-  background: var(--color-cream);
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+  background: #f5eee6;
   overflow: hidden;
-  min-height: 480px;
-  display: flex;
-  align-items: center;
 }
 
-/* Bloc navy absolu en bas avec SVG Bézier en haut */
-.portfolio-social__wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 75%;
-  background: var(--color-navy);
-  overflow: visible;
-  z-index: 0;
-}
-
-.portfolio-social__inner {
+.portfolio-social__content {
   position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3rem 4rem;
+  z-index: 2;
+  width: 45%;
+  padding: 60px 0 60px 80px;
+}
+
+.portfolio-social__label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e9a708;
+  margin-bottom: 16px;
+}
+
+.portfolio-social__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: #12263e;
+  line-height: 1.1;
+  margin-bottom: 20px;
 }
 
 .portfolio-social__text {
-  flex: 0 0 45%;
-  z-index: 1;
-}
-.portfolio-social__title {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 3.5vw, 3.5rem);
-  font-weight: 600;
-  color: var(--color-navy);
-  line-height: 1.1;
-  margin-bottom: 1rem;
-}
-.portfolio-social__body {
-  font-size: 0.9rem;
-  line-height: 1.8;
-  color: var(--color-text);
-  opacity: 0.75;
-  margin-bottom: 2rem;
-}
-.portfolio-social__cta {
-  display: inline-block;
+  font-size: 14px;
+  color: #12263e;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  max-width: 360px;
 }
 
-/* Mockup (droite) */
-.portfolio-social__mockup {
-  flex: 1;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
+.portfolio-social__btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid #e9a708;
+  color: #e9a708;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
 }
-.portfolio-social__mockup img {
-  width: 100%;
-  max-width: 440px;
-  display: block;
-  color: transparent;
+.portfolio-social__btn:hover {
+  background: #e9a708;
+  color: #12263e;
+}
+
+.portfolio-social__wave {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 70%;
+  height: 100%;
+  background: #12263e;
+  overflow: visible;
+}
+
+.portfolio-social__phones {
   position: relative;
   z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-social__phones img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  display: block;
+  color: transparent;
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
 }
 
 
