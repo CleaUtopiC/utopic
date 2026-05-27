@@ -936,3 +936,82 @@ ul { list-style: none; }
   .presta-item:nth-child(1),
   .presta-item:nth-child(3) { margin-top: 1.5rem; }
 }
+
+/* ===== PORTFOLIO SOCIAL ===== */
+.portfolio-social {
+  position: relative;
+  min-height: 480px;
+  background: #f5eee6;
+  overflow: hidden;
+}
+
+.ps-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ps-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 80px;
+  min-height: 480px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.ps-text {
+  width: 38%;
+  text-align: center;
+}
+
+.ps-title {
+  font-family: 'Bodoni Moda', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  color: #12263e;
+  margin-bottom: 28px;
+}
+
+.ps-btn {
+  display: inline-block;
+  padding: 10px 26px;
+  border: 1.5px solid #e9a708;
+  color: #e9a708;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.ps-btn:hover {
+  background: #e9a708;
+  color: #12263e;
+}
+
+.ps-phones {
+  position: relative;
+  width: 50%;
+  height: 380px;
+  flex-shrink: 0;
+}
+
+.ps-phone {
+  position: absolute;
+  width: 170px;
+  border-radius: 16px;
+  filter: drop-shadow(0 16px 32px rgba(0,0,0,0.35));
+  color: transparent;
+}
+.ps-phone--1 { top: 0;    right: 260px; transform: rotate(-14deg); }
+.ps-phone--2 { top: 50px; right: 110px; transform: rotate(4deg); }
+.ps-phone--3 { top: 120px; right: 0;    transform: rotate(-4deg); }

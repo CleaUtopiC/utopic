@@ -128,83 +128,6 @@
 }
 
 
-/* =============================================
-   SECTION RÉSEAUX SOCIAUX — vague navy
-   ============================================= */
-.portfolio-social {
-  position: relative;
-  min-height: 500px;
-  background: #f5eee6;
-  overflow: hidden;
-}
-
-.portfolio-social__svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
-.portfolio-social__inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 80px;
-  min-height: 500px;
-}
-
-.portfolio-social__text {
-  width: 40%;
-}
-
-.portfolio-social__title {
-  font-family: var(--font-display);
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  font-weight: 400;
-  font-style: italic;
-  line-height: 1.3;
-  color: #12263e;
-  margin-bottom: 28px;
-  text-align: center;
-}
-
-.portfolio-social__btn {
-  display: inline-block;
-  padding: 10px 24px;
-  border: 1.5px solid #e9a708;
-  color: #e9a708;
-  font-family: var(--font-body);
-  font-size: 13px;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-}
-.portfolio-social__btn:hover {
-  background: #e9a708;
-  color: #12263e;
-}
-
-.portfolio-social__phones {
-  position: relative;
-  width: 50%;
-  height: 400px;
-}
-
-.portfolio-social__phone {
-  position: absolute;
-  width: 180px;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));
-  color: transparent;
-}
-.portfolio-social__phone--1 { top: 0; right: 200px; transform: rotate(-12deg); }
-.portfolio-social__phone--2 { top: 60px; right: 80px; transform: rotate(5deg); }
-.portfolio-social__phone--3 { top: 140px; right: 0; transform: rotate(-3deg); }
-
 
 /* =============================================
    SOUS-PAGES PORTFOLIO (grille projets)
@@ -267,9 +190,9 @@
   .portfolio-hub { padding-top: calc(var(--header-main-h) + 2.5rem); }
   .portfolio-hub__grid { grid-template-columns: 1fr; }
 
-  .portfolio-social__inner { flex-direction: column; padding: 40px 24px; min-height: auto; }
-  .portfolio-social__text { width: 100%; margin-bottom: 2rem; }
-  .portfolio-social__phones { width: 100%; height: 300px; }
+  .ps-inner { flex-direction: column; padding: 40px 24px; min-height: auto; }
+  .ps-text { width: 100%; margin-bottom: 2rem; }
+  .ps-phones { width: 100%; height: 300px; }
 
   .portfolio-sub { padding-top: calc(var(--header-main-h) + 2.5rem); }
   .projects-grid { grid-template-columns: 1fr; }
@@ -277,7 +200,7 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .portfolio-hub__grid { grid-template-columns: repeat(2, 1fr); }
   .projects-grid { grid-template-columns: repeat(2, 1fr); }
-  .portfolio-social__inner { padding: 40px 32px; }
-  .portfolio-social__text { width: 100%; margin-bottom: 2rem; }
-  .portfolio-social__phones { width: 100%; }
+  .ps-inner { padding: 40px 32px; }
+  .ps-text { width: 100%; margin-bottom: 2rem; }
+  .ps-phones { width: 100%; }
 }
