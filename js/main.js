@@ -151,3 +151,34 @@ if (scrollTopBtn) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+// Curseur personnalisé fleur + cercle décalé
+(function() {
+  const flower = document.createElement('div');
+  flower.id = 'cursor-flower';
+  flower.textContent = '✿';
+  document.body.appendChild(flower);
+
+  const circle = document.createElement('div');
+  circle.id = 'cursor-circle';
+  document.body.appendChild(circle);
+
+  let mouseX = 0, mouseY = 0;
+  let circleX = 0, circleY = 0;
+
+  document.addEventListener('mousemove', function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    flower.style.left = mouseX + 'px';
+    flower.style.top = mouseY + 'px';
+  });
+
+  function animateCircle() {
+    circleX += (mouseX - circleX) * 0.12;
+    circleY += (mouseY - circleY) * 0.12;
+    circle.style.left = circleX + 'px';
+    circle.style.top = circleY + 'px';
+    requestAnimationFrame(animateCircle);
+  }
+  animateCircle();
+})();

@@ -75,7 +75,7 @@ ul { list-style: none; }
 }
 .btn:hover {
   background: var(--color-gold);
-  color: var(--color-navy);
+  color: #ffffff;
 }
 .btn--gold-outline {
   border: 2px solid var(--color-gold);
@@ -84,7 +84,7 @@ ul { list-style: none; }
 }
 .btn--gold-outline:hover {
   background: var(--color-gold);
-  color: var(--color-navy);
+  color: #ffffff;
 }
 .btn--navy {
   border: 1.5px solid var(--color-navy);
@@ -358,6 +358,7 @@ ul { list-style: none; }
   grid-template-rows: repeat(5, auto);
   grid-auto-flow: column;
   gap: 0.75rem 1.5rem;
+  align-items: start;
 }
 .footer-nav-block__cols li { margin-bottom: 0.4rem; }
 .footer-nav-block__cols li:nth-child(n+9) { grid-column: 3; }
@@ -470,7 +471,7 @@ ul { list-style: none; }
 }
 .hero__cta:hover {
   background: var(--color-gold);
-  color: var(--color-navy);
+  color: #ffffff;
 }
 
 
@@ -1022,7 +1023,7 @@ ul { list-style: none; }
 }
 .ps-btn:hover {
   background: #e9a708;
-  color: #12263e;
+  color: #ffffff !important;
 }
 
 .ps-phones {
@@ -1042,3 +1043,33 @@ ul { list-style: none; }
 .ps-phone--1 { top: 0;    right: 260px; transform: rotate(-14deg); }
 .ps-phone--2 { top: 50px; right: 110px; transform: rotate(4deg); }
 .ps-phone--3 { top: 120px; right: 0;    transform: rotate(-4deg); }
+
+
+/* =============================================
+   CURSEUR PERSONNALISÉ
+   ============================================= */
+*, *::before, *::after { cursor: none !important; }
+
+#cursor-circle {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid #334b35;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: left 0.15s ease, top 0.15s ease;
+  will-change: left, top;
+}
+
+#cursor-flower {
+  position: fixed;
+  font-size: 18px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+  color: #e9a708;
+  will-change: left, top;
+}
