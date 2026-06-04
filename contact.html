@@ -123,13 +123,17 @@
 
           <!-- Colonne droite : formulaire -->
           <div class="contact-form-wrap">
+            <!-- TODO: Remplacer l'endpoint Formspree par celui de Cléa -->
             <form
-              action="https://formspree.io/f/VOTRE_ID"
+              action="https://formspree.io/f/xpwzgvkj"
               method="POST"
               class="contact-form"
               id="contactForm"
               novalidate
             >
+              <input type="hidden" name="_subject" value="Nouveau message depuis utopi-c.com">
+              <input type="hidden" name="_replyto" value="contact@utopi-c.com">
+              <input type="hidden" name="_next" value="https://utopi-c.com/contact.html?merci=1">
 
               <!-- Ligne 1 : Prénom + Nom -->
               <div class="form-row">

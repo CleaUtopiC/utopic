@@ -373,6 +373,11 @@ ul { list-style: none; }
   transition: opacity var(--transition), color var(--transition);
 }
 .footer-nav-block__cols a:hover { opacity: 1; color: var(--color-gold); }
+.footer-nav-block__cols a[href*="politique"],
+.footer-nav-block__cols a[href*="confidentialite"] {
+  white-space: nowrap;
+  font-size: 11px;
+}
 
 .footer-copyright {
   background: var(--color-gold);
