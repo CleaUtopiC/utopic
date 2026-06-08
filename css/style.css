@@ -1018,6 +1018,33 @@ ul { list-style: none; }
 
   /* Fix 6 — Media */
   img, video, iframe, svg { max-width: 100%; height: auto; }
+
+  /* Problème 1 — exp-box : titres horizontaux */
+  .exp-box .job-title,
+  .exp-box .job-header,
+  .exp-box .job-company,
+  .exp-box .job-date {
+    writing-mode: horizontal-tb !important;
+    text-orientation: mixed !important;
+    transform: none !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  .exp-box .job-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px;
+  }
+
+  /* Problème 2 — soft skills : hauteur auto */
+  .ap-skills__col--skills,
+  .skills-expanded,
+  .soft-skills-col {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  .skills-expanded:empty,
+  .soft-skills-col:empty { display: none !important; }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {

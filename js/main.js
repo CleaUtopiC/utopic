@@ -24,7 +24,8 @@ hamburger?.addEventListener('click', () => {
 dropItem?.querySelector('.header-nav__link')?.addEventListener('click', (e) => {
   if (window.innerWidth <= 768) {
     e.preventDefault();
-    dropItem.classList.toggle('is-open');
+    e.stopPropagation();
+    window.location.href = 'portfolio.html';
   }
 });
 
