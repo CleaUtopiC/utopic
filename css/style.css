@@ -1042,9 +1042,28 @@ ul { list-style: none; }
   .soft-skills-col {
     min-height: 0 !important;
     height: auto !important;
+    max-height: none !important;
   }
   .skills-expanded:empty,
   .soft-skills-col:empty { display: none !important; }
+
+  /* Fix critique — casser le grid ap-skills__inner qui synchronise les hauteurs */
+  .ap-skills { display: block !important; flex-direction: unset !important; }
+  .ap-skills__inner { display: block !important; }
+  .ap-skills__col,
+  .ap-skills__col--skills,
+  .ap-skills__col--exp {
+    width: 100% !important;
+    min-height: 0 !important;
+    height: auto !important;
+    flex: none !important;
+    align-self: auto !important;
+  }
+  .skills-expanded {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
