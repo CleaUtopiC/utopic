@@ -162,6 +162,11 @@ function fixSkillsHeight() {
     skillsExpanded.style.overflow = 'visible';
     skillsExpanded.style.maxHeight = 'none';
   }
+  document.querySelectorAll('.skill-entry__desc').forEach(el => {
+    el.style.height = 'auto';
+    el.style.maxHeight = 'none';
+    el.style.overflow = 'visible';
+  });
 }
 fixSkillsHeight();
 window.addEventListener('resize', fixSkillsHeight, { passive: true });
