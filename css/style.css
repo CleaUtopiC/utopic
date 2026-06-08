@@ -1015,6 +1015,12 @@ ul { list-style: none; }
     word-break: break-word;
     white-space: normal !important;
   }
+  /* [class*="skill"] capte .skills-expanded — on remet overflow visible */
+  .skills-expanded {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+  }
 
   /* Fix 6 — Media */
   img, video, iframe, svg { max-width: 100%; height: auto; }

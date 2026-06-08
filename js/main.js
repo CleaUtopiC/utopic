@@ -153,6 +153,19 @@ if (scrollTopBtn) {
   });
 }
 
+// Fix skills-expanded height sur mobile
+function fixSkillsHeight() {
+  const skillsExpanded = document.querySelector('.skills-expanded');
+  if (!skillsExpanded) return;
+  if (window.innerWidth <= 900) {
+    skillsExpanded.style.height = 'auto';
+    skillsExpanded.style.overflow = 'visible';
+    skillsExpanded.style.maxHeight = 'none';
+  }
+}
+fixSkillsHeight();
+window.addEventListener('resize', fixSkillsHeight, { passive: true });
+
 // Curseur personnalisé fleur + cercle décalé
 (function() {
   const flower = document.createElement('div');
