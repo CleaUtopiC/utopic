@@ -157,6 +157,8 @@
   background: var(--color-cream);
 }
 .ap-skills__col--skills .ap-skills__col-title { color: var(--color-navy); }
+.ap-skills__col--skills { order: -1; }
+.ap-skills__col--exp    { order: 1; }
 
 /* Expériences */
 .exp-item__header { margin-bottom: 1rem; }
@@ -357,7 +359,8 @@
     border-radius: 20px;
   }
 
-  .formation-list { grid-template-columns: 1fr; }
+  .formation-list { grid-template-columns: 1fr 1fr; }
+  .formation-item:nth-child(3) { grid-column: 1 / -1; }
 
   .ap-skills__inner {
     grid-template-columns: 1fr;

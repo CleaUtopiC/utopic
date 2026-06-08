@@ -923,8 +923,8 @@ ul { list-style: none; }
 
   /* Footer */
   .footer-main__inner { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-nav-block__cols { grid-template-columns: 1fr; gap: 0; }
-  .footer-nav-block__cols a { display: block; padding: 8px 0; font-size: 13px; }
+  .footer-nav-block__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+  .footer-nav-block__cols a { font-size: 12px; padding: 4px 0; white-space: nowrap; }
 
   /* Carousel */
   .carousel__slide { flex: 0 0 100%; }
@@ -957,6 +957,12 @@ ul { list-style: none; }
 
   /* Sub-pages */
   .sub-hero__title { font-size: clamp(2.5rem, 10vw, 5rem) !important; }
+
+  .realisations .section-title { font-size: clamp(1.2rem, 5vw, 1.8rem); white-space: nowrap; }
+  .realisations .section-sub { font-size: clamp(0.75rem, 3.5vw, 1rem); white-space: nowrap; }
+  .prestations__title { font-size: clamp(1.4rem, 6vw, 2.2rem); }
+  .experiences-intro .section-title,
+  .experiences-intro h2 { font-size: clamp(1.1rem, 4.5vw, 1.6rem); white-space: nowrap; }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
