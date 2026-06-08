@@ -166,25 +166,50 @@ function fixSkillsHeight() {
 fixSkillsHeight();
 window.addEventListener('resize', fixSkillsHeight, { passive: true });
 
+// 20.3 — Portfolio : clic toujours cliquable sur mobile
+document.querySelectorAll('.header-nav__link[href="portfolio.html"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.stopPropagation();
+      window.location.href = 'portfolio.html';
+    }
+  });
+});
+
+// 20.6 — Galerie : contrôle des flèches via Web Animations API
+window.galleryNav = function(btn, dir) {
+  const grid = btn.closest('.sub-gallery__inner').querySelector('.sub-gallery__grid');
+  const anim = grid && grid.getAnimations()[0];
+  if (!anim) return;
+  anim.pause();
+  const duration = anim.effect.getTiming().duration;
+  anim.currentTime = ((anim.currentTime + dir * (duration / 8)) % duration + duration) % duration;
+  anim.play();
+};
+
 // Curseur personnalisé fleur + cercle décalé
 (function() {
   const flower = document.createElement('div');
   flower.id = 'cursor-flower';
   flower.textContent = '✿';
+  flower.style.visibility = 'hidden';
   document.body.appendChild(flower);
 
   const circle = document.createElement('div');
   circle.id = 'cursor-circle';
+  circle.style.visibility = 'hidden';
   document.body.appendChild(circle);
 
-  let mouseX = 0, mouseY = 0;
-  let circleX = 0, circleY = 0;
+  let mouseX = 24, mouseY = 24;
+  let circleX = 24, circleY = 24;
 
   document.addEventListener('mousemove', function(e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
     flower.style.left = mouseX + 'px';
     flower.style.top = mouseY + 'px';
+    flower.style.visibility = 'visible';
+    circle.style.visibility = 'visible';
   });
 
   function animateCircle() {

@@ -871,6 +871,17 @@ ul { list-style: none; }
 
 
 /* =============================================
+   FIX GLOBAL — casse le stretch en cascade ap-skills
+   ============================================= */
+.ap-skills { align-items: flex-start; }
+.ap-skills__col--skills { align-self: flex-start; }
+.skills-expanded { height: auto !important; max-height: none !important; overflow: visible !important; }
+.skill-entry { align-items: flex-start !important; }
+.skill-entry > div,
+.skill-entry > p,
+.skill-entry > span { height: auto !important; min-height: 0 !important; align-self: flex-start !important; }
+
+/* =============================================
    RESPONSIVE
    ============================================= */
 @media (max-width: 768px) {
@@ -1025,6 +1036,29 @@ ul { list-style: none; }
   /* Fix 6 — Media */
   img, video, iframe, svg { max-width: 100%; height: auto; }
 
+  /* 20.1 — Header : logo centré, hamburger à droite */
+  .header-main__inner { justify-content: center !important; position: relative !important; }
+  .header-logo { position: absolute !important; left: 50% !important; transform: translateX(-50%) !important; }
+  .header-hamburger { position: absolute !important; right: 16px !important; }
+
+  /* 20.4 — Footer restructuré mobile */
+  .footer-main__inner > *:first-child {
+    text-align: center !important; width: 100% !important;
+    display: flex !important; flex-direction: column !important; align-items: center !important;
+  }
+  .footer-nav-block { width: 100% !important; text-align: center !important; }
+  .footer-nav-block__cols { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px 16px !important; justify-items: center !important; width: 100% !important; }
+  .footer-nav-block__cols a[href*="identite"],
+  .footer-nav-block__cols a[href*="print"],
+  .footer-nav-block__cols a[href*="digitale"] { display: none !important; }
+  .footer-nav-block__cols a { font-size: 12px !important; white-space: nowrap !important; }
+
+  /* 20.5 — Titres accueil responsive */
+  .realisations .section-title { font-size: clamp(1rem, 4.5vw, 1.4rem) !important; white-space: nowrap !important; }
+  .realisations .section-sub { font-size: clamp(0.7rem, 3vw, 0.9rem) !important; white-space: nowrap !important; }
+  .prestations__title, .prestations .section-title { font-size: clamp(1.2rem, 5vw, 1.8rem) !important; }
+  .experiences .section-title, [class*="experience"] h2 { font-size: clamp(1rem, 4vw, 1.4rem) !important; white-space: nowrap !important; }
+
   /* Problème 1 — exp-box : titres horizontaux */
   .exp-box .job-title,
   .exp-box .job-header,
@@ -1054,8 +1088,8 @@ ul { list-style: none; }
   .soft-skills-col:empty { display: none !important; }
 
   /* Fix ordre colonnes mobile — flex column sur __inner pour que order fonctionne */
-  .ap-skills { display: flex !important; flex-direction: column !important; }
-  .ap-skills__inner { display: flex !important; flex-direction: column !important; align-items: stretch !important; }
+  .ap-skills { display: flex !important; flex-direction: column !important; align-items: flex-start !important; }
+  .ap-skills__inner { display: flex !important; flex-direction: column !important; align-items: flex-start !important; }
   .ap-skills__col--skills { order: -1 !important; width: 100% !important; height: auto !important; min-height: 0 !important; }
   .ap-skills__col--exp    { order: 1 !important;  width: 100% !important; }
   .ap-skills__col { flex: none !important; align-self: auto !important; }

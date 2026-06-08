@@ -87,11 +87,12 @@
 .sub-gallery__inner {
   max-width: var(--max-w);
   margin: 0 auto;
+  position: relative;
 }
 .sub-gallery__grid {
   display: flex;
   gap: 0.75rem;
-  animation: gallery-scroll 30s linear infinite;
+  animation: gallery-scroll 18s linear infinite;
 }
 .sub-gallery__grid:hover { animation-play-state: paused; }
 .sub-gallery__item {
