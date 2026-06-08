@@ -1053,18 +1053,12 @@ ul { list-style: none; }
   .skills-expanded:empty,
   .soft-skills-col:empty { display: none !important; }
 
-  /* Fix critique — casser le grid ap-skills__inner qui synchronise les hauteurs */
-  .ap-skills { display: block !important; flex-direction: unset !important; }
-  .ap-skills__inner { display: block !important; }
-  .ap-skills__col,
-  .ap-skills__col--skills,
-  .ap-skills__col--exp {
-    width: 100% !important;
-    min-height: 0 !important;
-    height: auto !important;
-    flex: none !important;
-    align-self: auto !important;
-  }
+  /* Fix ordre colonnes mobile — flex column sur __inner pour que order fonctionne */
+  .ap-skills { display: flex !important; flex-direction: column !important; }
+  .ap-skills__inner { display: flex !important; flex-direction: column !important; align-items: stretch !important; }
+  .ap-skills__col--skills { order: -1 !important; width: 100% !important; height: auto !important; min-height: 0 !important; }
+  .ap-skills__col--exp    { order: 1 !important;  width: 100% !important; }
+  .ap-skills__col { flex: none !important; align-self: auto !important; }
   .skills-expanded {
     height: auto !important;
     min-height: 0 !important;
