@@ -877,6 +877,10 @@ ul { list-style: none; }
 .ap-skills__col--skills { align-self: flex-start; }
 .skills-expanded { height: auto !important; max-height: none !important; overflow: visible !important; }
 .skill-entry { align-items: flex-start !important; }
+/* [class*="skill"] set width:100% sur .skill-entry__icon → icône vole toute la largeur */
+.skill-entry__icon { width: auto !important; flex-shrink: 0 !important; flex-basis: auto !important; }
+/* Le div texte doit prendre l'espace restant */
+.skill-entry > div { flex: 1 1 auto !important; min-width: 0 !important; width: auto !important; }
 .skill-entry > div,
 .skill-entry > p,
 .skill-entry > span { height: auto !important; min-height: 0 !important; align-self: flex-start !important; }
