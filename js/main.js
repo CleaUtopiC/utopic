@@ -153,22 +153,19 @@ if (scrollTopBtn) {
   });
 }
 
-// Fix skills-expanded height sur mobile
+// Fix skills height — supprime tout inline style parasite
 function fixSkillsHeight() {
-  const skillsExpanded = document.querySelector('.skills-expanded');
-  if (!skillsExpanded) return;
-  if (window.innerWidth <= 900) {
-    skillsExpanded.style.height = 'auto';
-    skillsExpanded.style.overflow = 'visible';
-    skillsExpanded.style.maxHeight = 'none';
-  }
-  document.querySelectorAll('.skill-entry__desc').forEach(el => {
-    el.style.height = 'auto';
-    el.style.maxHeight = 'none';
-    el.style.overflow = 'visible';
+  document.querySelectorAll('.skills-expanded, .skills-group, .skill-entry, .skill-entry__desc').forEach(function(el) {
+    el.style.removeProperty('height');
+    el.style.removeProperty('max-height');
+    el.style.removeProperty('overflow');
+    el.style.removeProperty('overflow-x');
+    el.style.removeProperty('overflow-y');
   });
 }
 fixSkillsHeight();
+setTimeout(fixSkillsHeight, 300);
+setTimeout(fixSkillsHeight, 800);
 window.addEventListener('resize', fixSkillsHeight, { passive: true });
 
 // 20.3 — Portfolio : clic toujours cliquable sur mobile

@@ -880,6 +880,8 @@ ul { list-style: none; }
 .skill-entry > div,
 .skill-entry > p,
 .skill-entry > span { height: auto !important; min-height: 0 !important; align-self: flex-start !important; }
+/* [class*="skill"] capture aussi .skill-entry__desc → overflow visible */
+.skill-entry__desc { height: auto !important; max-height: none !important; overflow: visible !important; }
 
 /* =============================================
    RESPONSIVE
@@ -1026,8 +1028,11 @@ ul { list-style: none; }
     word-break: break-word;
     white-space: normal !important;
   }
-  /* [class*="skill"] capte .skills-expanded — on remet overflow visible */
-  .skills-expanded {
+  /* [class*="skill"] capte .skills-expanded, .skills-group, .skill-entry__desc — on remet overflow visible */
+  .skills-expanded,
+  .skills-group,
+  .skill-entry,
+  .skill-entry__desc {
     overflow: visible !important;
     height: auto !important;
     max-height: none !important;
