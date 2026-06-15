@@ -25,9 +25,10 @@
   if (grid && projResult.status === 'fulfilled' && projResult.value) {
     const { data, error } = projResult.value;
     if (!error && data?.length) {
-      grid.innerHTML = data.map(p =>
+      const items = data.map(p =>
         `<div class="sub-gallery__item"><img src="${url(p.image_url)}" alt="${esc(p.titre)}" loading="lazy" onerror="this.style.display='none'"></div>`
       ).join('');
+      grid.innerHTML = items + items.replace(/class="sub-gallery__item"/g, 'class="sub-gallery__item" aria-hidden="true"');
     }
   }
 

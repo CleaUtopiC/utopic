@@ -186,6 +186,22 @@ window.galleryNav = function(btn, dir) {
   grid.scrollBy({ left: dir * 300, behavior: 'smooth' });
 };
 
+// Galerie sub-pages : défilement automatique infini via rAF
+(function () {
+  document.querySelectorAll('.sub-gallery__grid').forEach(function (grid) {
+    var paused = false;
+    grid.addEventListener('mouseenter', function () { paused = true; });
+    grid.addEventListener('mouseleave', function () { paused = false; });
+    (function tick() {
+      if (!paused && grid.scrollWidth > grid.clientWidth) {
+        grid.scrollLeft += 1;
+        if (grid.scrollLeft >= grid.scrollWidth / 2) grid.scrollLeft = 0;
+      }
+      requestAnimationFrame(tick);
+    })();
+  });
+})();
+
 // Curseur personnalisé fleur + cercle décalé
 (function() {
   const flower = document.createElement('div');
