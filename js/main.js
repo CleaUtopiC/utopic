@@ -122,9 +122,10 @@ function initCarousel({ trackId, prevId, nextId, dotsId, forceVisible, autoplay 
 
   /* Autoplay */
   if (autoplay) {
+    if (track._autoplayTimer) clearInterval(track._autoplayTimer);
     const wrap = track.closest('.carousel');
     let timer;
-    function startTimer() { timer = setInterval(() => goTo(current + 1), autoplay); }
+    function startTimer() { timer = setInterval(() => goTo(current + 1), autoplay); track._autoplayTimer = timer; }
     resetAutoplay = function() { clearInterval(timer); startTimer(); };
     startTimer();
     wrap?.addEventListener('mouseenter', () => clearInterval(timer), { passive: true });

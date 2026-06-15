@@ -14,7 +14,19 @@
       "Bash(curl *)",
       "WebFetch(domain:contact3166073.wixsite.com)",
       "Bash(python -m http.server 8080 --bind 127.0.0.1)",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(git pull *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git stash *)",
+      "Bash(powershell -Command ' *)",
+      "Bash(git checkout *)",
+      "Skill(run)",
+      "Bash(dir \"C:\\\\Documents\\\\Projects\\\\Startup\\\\ClaudeCode\\\\CleaPortfolio\\\\utopic\\\\assets\" /b /s)",
+      "Bash(findstr /i \"logo icon favicon\")",
+      "Bash(dir C:\\\\Documents\\\\Projects\\\\Startup\\\\ClaudeCode\\\\CleaPortfolio\\\\utopic\\\\assets\\\\logos *)",
+      "Bash(dir \"C:\\\\Documents\\\\Projects\\\\Startup\\\\ClaudeCode\\\\CleaPortfolio\\\\utopic\\\\assets\\\\images\" /b)"
     ]
   }
 }
