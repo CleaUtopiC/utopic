@@ -96,16 +96,16 @@
 }
 .sub-gallery__grid:hover { animation-play-state: paused; }
 .sub-gallery__item {
-  flex: 0 0 280px;
-  aspect-ratio: 3/4;
+  flex: 0 0 auto;
+  height: 280px;
   overflow: hidden;
   border-radius: 4px;
   background: var(--color-cream);
 }
 .sub-gallery__item img {
-  width: 100%;
+  width: auto;
   height: 100%;
-  object-fit: cover;
+  object-fit: initial;
   display: block;
   transition: transform 0.4s ease;
   color: transparent;
@@ -358,7 +358,7 @@
   .sub-hero__back-wrap { padding-top: calc(var(--header-main-h) + 0.8rem); padding-bottom: 0.8rem; }
   .sub-hero { padding-top: 2.5rem; }
   .sub-hero__title-box { padding: 1.8rem 2rem 1.5rem; }
-  .sub-gallery__item { flex: 0 0 75vw; }
+  .sub-gallery__item { flex: 0 0 auto; height: 200px; }
   .sub-avantages__grid { grid-template-columns: 1fr; }
   .sub-avantages__col--green { padding: 2.5rem 1.8rem; }
   .sub-avantages__col--cream { padding: 2.5rem 1.8rem; }
@@ -366,7 +366,7 @@
   .sub-logos__strip { gap: 1.5rem; }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-  .sub-gallery__item { flex: 0 0 220px; }
+  .sub-gallery__item { flex: 0 0 auto; }
 }
 
 @keyframes ticker-scroll {

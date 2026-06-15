@@ -2,6 +2,7 @@
   function esc(str) {
     return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
+  function url(str) { return esc((str || '').trim()); }
 
   const STAR_SVG = `<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
 
@@ -20,7 +21,7 @@
 
   function renderPresseSlide(a) {
     const imgHtml = a.image_url
-      ? `<div class="presse-card__img-wrap"><img src="${esc(a.image_url)}" alt="${esc(a.auteur)}" loading="lazy"></div>`
+      ? `<div class="presse-card__img-wrap"><img src="${url(a.image_url)}" alt="${esc(a.auteur)}" loading="lazy" onerror="this.style.display='none'"></div>`
       : '';
     const card = `<div class="presse-card">
         ${imgHtml}
@@ -58,7 +59,7 @@
     const { data, error } = projResult.value;
     if (!error && data?.length) {
       realTrack.innerHTML = data.map(p =>
-        `<li class="carousel__slide"><img src="${esc(p.image_url)}" alt="${esc(p.titre)}" loading="lazy"></li>`
+        `<li class="carousel__slide"><img src="${url(p.image_url)}" alt="${esc(p.titre)}" loading="lazy" onerror="this.style.display='none'"></li>`
       ).join('');
       reinitCarousel({ trackId: 'realTrack', prevId: 'realPrev', nextId: 'realNext', dotsId: 'realDots', autoplay: 4500 });
     }

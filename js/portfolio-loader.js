@@ -11,6 +11,7 @@
   function esc(str) {
     return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
+  function url(str) { return esc((str || '').trim()); }
 
   const grid  = document.querySelector('.sub-gallery__grid');
   const strip = document.querySelector('.sub-logos__strip');
@@ -25,10 +26,10 @@
     const { data, error } = projResult.value;
     if (!error && data?.length) {
       const visible = data.map(p =>
-        `<div class="sub-gallery__item"><img src="${esc(p.image_url)}" alt="${esc(p.titre)}" loading="lazy"></div>`
+        `<div class="sub-gallery__item"><img src="${url(p.image_url)}" alt="${esc(p.titre)}" loading="lazy" onerror="this.style.display='none'"></div>`
       ).join('');
       const hidden = data.map(p =>
-        `<div class="sub-gallery__item" aria-hidden="true"><img src="${esc(p.image_url)}" alt="" loading="lazy"></div>`
+        `<div class="sub-gallery__item" aria-hidden="true"><img src="${url(p.image_url)}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`
       ).join('');
       grid.innerHTML = visible + hidden;
       // Force CSS animation restart after innerHTML replacement
@@ -45,7 +46,7 @@
       const renderItem = (c, hidden) => {
         const attrs = hidden ? ' aria-hidden="true"' : '';
         return c.logo_url
-          ? `<span class="sub-logos__item"${attrs}><img src="${esc(c.logo_url)}" alt="${hidden ? '' : esc(c.nom)}"></span>`
+          ? `<span class="sub-logos__item"${attrs}><img src="${url(c.logo_url)}" alt="${hidden ? '' : esc(c.nom)}" onerror="this.parentElement.style.display='none'"></span>`
           : `<span class="sub-logos__item"${attrs}>${esc(c.nom)}</span>`;
       };
       strip.innerHTML =
