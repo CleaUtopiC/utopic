@@ -92,9 +92,13 @@
 .sub-gallery__grid {
   display: flex;
   gap: 0.75rem;
-  animation: gallery-scroll 18s linear infinite;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-.sub-gallery__grid:hover { animation-play-state: paused; }
+.sub-gallery__grid::-webkit-scrollbar { display: none; }
 .sub-gallery__item {
   flex: 0 0 auto;
   height: 280px;
@@ -370,10 +374,6 @@
 }
 
 @keyframes ticker-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-@keyframes gallery-scroll {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }

@@ -182,12 +182,8 @@ document.querySelectorAll('.header-nav__link[href="portfolio.html"]').forEach(li
 // 20.6 — Galerie : contrôle des flèches via Web Animations API
 window.galleryNav = function(btn, dir) {
   const grid = btn.closest('.sub-gallery__inner').querySelector('.sub-gallery__grid');
-  const anim = grid && grid.getAnimations()[0];
-  if (!anim) return;
-  anim.pause();
-  const duration = anim.effect.getTiming().duration;
-  anim.currentTime = ((anim.currentTime + dir * (duration / 8)) % duration + duration) % duration;
-  anim.play();
+  if (!grid) return;
+  grid.scrollBy({ left: dir * 300, behavior: 'smooth' });
 };
 
 // Curseur personnalisé fleur + cercle décalé

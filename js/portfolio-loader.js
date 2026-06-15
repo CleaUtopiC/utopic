@@ -25,17 +25,9 @@
   if (grid && projResult.status === 'fulfilled' && projResult.value) {
     const { data, error } = projResult.value;
     if (!error && data?.length) {
-      const visible = data.map(p =>
+      grid.innerHTML = data.map(p =>
         `<div class="sub-gallery__item"><img src="${url(p.image_url)}" alt="${esc(p.titre)}" loading="lazy" onerror="this.style.display='none'"></div>`
       ).join('');
-      const hidden = data.map(p =>
-        `<div class="sub-gallery__item" aria-hidden="true"><img src="${url(p.image_url)}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`
-      ).join('');
-      grid.innerHTML = visible + hidden;
-      // Force CSS animation restart after innerHTML replacement
-      grid.style.animation = 'none';
-      grid.offsetHeight; // reflow
-      grid.style.animation = '';
     }
   }
 
