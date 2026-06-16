@@ -18,7 +18,7 @@
 
   const [projResult, clientsResult] = await Promise.allSettled([
     grid  ? supabaseClient.from('projets').select('titre, image_url').eq('categorie', category).order('ordre') : Promise.resolve(null),
-    strip ? supabaseClient.from('clients').select('nom, logo_url').order('ordre') : Promise.resolve(null)
+    strip ? supabaseClient.from('clients').select('nom, logo_url').eq('categorie', category).order('ordre') : Promise.resolve(null)
   ]);
 
   // ---- Galerie projets (CSS-animated grid) ----
