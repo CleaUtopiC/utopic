@@ -887,6 +887,8 @@ ul { list-style: none; }
 /* [class*="skill"] capture aussi .skill-entry__desc → overflow visible */
 .skill-entry__desc { height: auto !important; max-height: none !important; overflow: visible !important; }
 
+.nav-mobile-only { display: none; }
+
 /* =============================================
    RESPONSIVE
    ============================================= */
@@ -933,6 +935,7 @@ ul { list-style: none; }
   .header-nav__chevron { margin-left: auto; }
   .header-hamburger { display: flex; }
   .btn-contact-bubble { display: none !important; }
+  .nav-mobile-only { display: list-item; }
 
   /* Hero */
   .hero__inner { padding: 3rem 1.5rem 4rem; }
