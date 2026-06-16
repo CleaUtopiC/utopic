@@ -141,9 +141,13 @@
 .sub-logos__strip {
   display: inline-flex;
   align-items: center;
-  gap: 3rem;
+  gap: 0;
   white-space: nowrap;
   animation: ticker-scroll 20s linear infinite;
+}
+.sub-logos__strip > * {
+  margin-right: 3rem;
+  flex-shrink: 0;
 }
 .sub-logos__item {
   font-size: 0.75rem;
@@ -367,7 +371,7 @@
   .sub-avantages__col--green { padding: 2.5rem 1.8rem; }
   .sub-avantages__col--cream { padding: 2.5rem 1.8rem; }
   .sub-pourquoi__card { padding: 2rem 1.5rem; }
-  .sub-logos__strip { gap: 1.5rem; }
+  .sub-logos__strip > * { margin-right: 1.5rem; }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
   .sub-gallery__item { flex: 0 0 auto; }
