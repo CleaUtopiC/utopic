@@ -483,6 +483,21 @@ ul { list-style: none; }
 
 
 /* =============================================
+   WAVE BAND — bandeau vague décoratif (statique)
+   ============================================= */
+.wave-band {
+  position: relative;
+  width: 100%;
+  height: clamp(60px, 10.5vw, 150px);
+  background-color: var(--color-white);
+  background-image: url('../assets/images/vague_bandeau.png');
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: auto 100%;
+}
+
+
+/* =============================================
    RÉALISATIONS — fond crème, carousel projets
    ============================================= */
 .realisations {
