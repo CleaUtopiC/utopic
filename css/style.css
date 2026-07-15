@@ -36,6 +36,8 @@
   --header-topbar-h: 40px;
   --header-main-h:   123px;
   --header-h:        163px;
+  --band-h:          clamp(60px, 10.5vw, 150px);
+  --tile:            calc(var(--band-h) * 120 / 7); /* 5760/336 ratio fleurs_strip.webp */
   --transition:      0.25s ease;
   --max-w:           1200px;
 }
@@ -431,7 +433,7 @@ ul { list-style: none; }
    HERO — texte aligné gauche, fond blanc
    ============================================= */
 .hero {
-  min-height: 100vh;
+  min-height: calc(100svh - var(--band-h));
   padding-top: var(--header-h);
   background: var(--color-white);
   display: flex;
@@ -439,7 +441,7 @@ ul { list-style: none; }
 }
 .hero__inner {
   width: 100%;
-  padding: 170px 22% 6rem;
+  padding: 130px 22% 3rem;
   text-align: left;
 }
 .hero__tagline {
@@ -458,7 +460,7 @@ ul { list-style: none; }
   letter-spacing: 1.4px;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin: 80px 0 0;
+  margin: 48px 0 0;
   text-align: left;
   max-width: 600px;
 }
@@ -468,7 +470,7 @@ ul { list-style: none; }
   height: 55px;
   line-height: 55px;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 32px;
   border: 2px solid var(--color-gold);
   color: var(--color-gold);
   font-family: var(--font-sans);
@@ -488,12 +490,38 @@ ul { list-style: none; }
 .wave-band {
   position: relative;
   width: 100%;
-  height: clamp(60px, 10.5vw, 150px);
-  background-color: var(--color-white);
-  background-image: url('../assets/images/vague_bandeau.png');
+  height: var(--band-h);
+  overflow: hidden;
+  -webkit-mask-image: url('../assets/images/vague_bandeau.png');
+  mask-image: url('../assets/images/vague_bandeau.png');
+  -webkit-mask-repeat:  no-repeat; 
+  mask-repeat: no-repeat;
+  -webkit-mask-position: left top;
+  mask-position: left top;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  mask-mode: alpha;
+}
+.wave-band::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: calc(100% + var(--tile));
+  background-image: url('../assets/images/fleurs_strip.webp');
   background-repeat: repeat-x;
   background-position: left top;
   background-size: auto 100%;
+  animation: fleurs-defile 80s linear infinite;
+  will-change: transform;
+}
+@keyframes fleurs-defile {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-1 * var(--tile))); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wave-band::before { animation: none; }
 }
 
 
