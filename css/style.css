@@ -757,7 +757,8 @@ ul { list-style: none; }
 /* Slide presse/avis — carousel pleine largeur */
 .carousel__slide--presse { flex: 0 0 100%; }
 .carousel__slide--presse .presse-card,
-.carousel__slide--presse .avis-card { max-width: 800px; margin: 0 auto; }
+.carousel__slide--presse .avis-card { width: 100%; max-width: 800px; margin: 0 auto; }
+.carousel__slide--presse { display: flex; flex-direction: column; justify-content: center; }
 
 .presse-card {
   display: grid;
