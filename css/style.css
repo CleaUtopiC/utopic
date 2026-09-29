@@ -1131,6 +1131,12 @@ ul { list-style: none; }
   .footer-nav-block__cols a[href*="print"],
   .footer-nav-block__cols a[href*="digitale"] { display: none !important; }
   .footer-nav-block__cols a { font-size: 12px !important; white-space: nowrap !important; }
+  /* Débordement footer : la 3e colonne forcée (desktop) créait une piste implicite de 225px */
+  .footer-main__inner { grid-template-columns: minmax(0, 1fr) !important; }
+  .footer-nav-block__cols { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; grid-template-rows: none; grid-auto-flow: row; }
+  .footer-nav-block__cols li:nth-child(n+9) { grid-column: auto; }
+  .footer-nav-block__cols li:has(> a[href*="identite"], > a[href*="print"], > a[href*="digitale"]) { display: none; }
+  .footer-nav-block__cols a[href*="confidentialite"] { white-space: normal !important; }
 
   /* 20.5 — Titres accueil responsive */
   .realisations .section-title { font-size: clamp(1rem, 4.5vw, 1.4rem) !important; white-space: nowrap !important; }
