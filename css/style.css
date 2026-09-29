@@ -1005,6 +1005,7 @@ ul { list-style: none; }
   .nav-mobile-only { display: list-item; }
 
   /* Hero */
+  .hero { min-height: auto; }
   .hero__inner { padding: 3rem 1.5rem 4rem; }
   .hero__tagline { font-size: clamp(2rem, 7vw, 3rem); }
   .hero__subtitle { margin-top: 2rem; }
