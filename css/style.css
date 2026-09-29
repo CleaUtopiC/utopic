@@ -37,9 +37,13 @@
   --header-main-h:   123px;
   --header-h:        163px;
   --band-h:          clamp(60px, 10.5vw, 150px);
-  --tile:            calc(var(--band-h) * 120 / 7); /* 5760/336 ratio fleurs_strip.webp */
+  --tile:            calc(var(--band-h) * 64 / 9); /* 3840/540 ratio fleurs_strip.webp */
   --transition:      0.25s ease;
   --max-w:           1200px;
+}
+/* Tuile en px entiers : pas de raccord sous-pixel visible dans le repeat-x */
+@supports (width: round(1.5px, 1px)) {
+  :root { --tile: round(calc(var(--band-h) * 64 / 9), 1px); }
 }
 
 /* =============================================
@@ -487,6 +491,25 @@ ul { list-style: none; }
 /* =============================================
    WAVE BAND — bandeau vague décoratif (statique)
    ============================================= */
+/* Fond beige sous la vague : union de 3 copies du masque décalées vers le bas
+   (décalage < épaisseur du ruban) = tout ce qui est sous le bord haut de la vague. */
+.wave-edge {
+  --wave-off: calc(var(--band-h) * 0.35);
+  --wave-h: calc(var(--band-h) - 3px); /* marge beige sous le point bas du ruban ; +2px en largeur : dernière colonne du PNG tronquée */
+  position: relative;
+  overflow: hidden;
+  background: var(--color-cream);
+  -webkit-mask-image: url('../assets/images/vague_bandeau.png'), url('../assets/images/vague_bandeau.png'), url('../assets/images/vague_bandeau.png');
+  mask-image: url('../assets/images/vague_bandeau.png'), url('../assets/images/vague_bandeau.png'), url('../assets/images/vague_bandeau.png');
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: calc(100% + 2px) var(--wave-h);
+  mask-size: calc(100% + 2px) var(--wave-h);
+  -webkit-mask-position: 0 0, 0 var(--wave-off), 0 calc(2 * var(--wave-off));
+  mask-position: 0 0, 0 var(--wave-off), 0 calc(2 * var(--wave-off));
+  -webkit-mask-composite: source-over;
+  mask-composite: add;
+}
 .wave-band {
   position: relative;
   width: 100%;
@@ -498,8 +521,8 @@ ul { list-style: none; }
   mask-repeat: no-repeat;
   -webkit-mask-position: left top;
   mask-position: left top;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  -webkit-mask-size: calc(100% + 2px) var(--wave-h);
+  mask-size: calc(100% + 2px) var(--wave-h);
   mask-mode: alpha;
 }
 .wave-band::before {
@@ -512,7 +535,7 @@ ul { list-style: none; }
   background-image: url('../assets/images/fleurs_strip.webp');
   background-repeat: repeat-x;
   background-position: left top;
-  background-size: auto 100%;
+  background-size: var(--tile) 100%;
   animation: fleurs-defile 80s linear infinite;
   will-change: transform;
 }
