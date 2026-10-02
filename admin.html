@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data: blob:; connect-src https://zyeqeigakhaticuwqgji.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>Espace admin — Utopi'C</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logos/logo-utopic-mini.png" />
+  <script src="js/admin-guard.js"></script>
+  <link rel="stylesheet" href="css/admin.css?v=2" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.min.js" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
+  <script src="js/supabase-client.js"></script>
+  <script src="js/admin.js?v=2" defer></script>
+</head>
+<body>
+
+  <header class="adm-header">
+    <div class="adm-header__inner">
+      <a href="index.html" class="adm-header__brand">
+        <img src="assets/logos/logo-utopic-mini.png" alt="" width="40" height="40" />
+        <span>Utopi'C <em>· espace admin</em></span>
+      </a>
+      <div class="adm-header__user" id="userBar" hidden>
+        <span id="userEmail"></span>
+        <button type="button" class="adm-btn adm-btn--ghost" id="logoutBtn">Se déconnecter</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <p class="adm-loading" id="bootMsg">Chargement…</p>
+
+    <!-- ======= CONNEXION ======= -->
+    <section class="adm-login" id="loginView" hidden>
+      <h1>Connexion</h1>
+      <p class="adm-hint">Espace réservé à Cléa pour mettre à jour le site.</p>
+      <form id="loginForm" novalidate>
+        <label for="loginEmail">Adresse e-mail</label>
+        <input type="email" id="loginEmail" autocomplete="username" required maxlength="254" />
+        <label for="loginPassword">Mot de passe</label>
+        <input type="password" id="loginPassword" autocomplete="current-password" required maxlength="128" />
+        <p class="adm-error" id="loginError" role="alert"></p>
+        <button type="submit" class="adm-btn adm-btn--gold" id="loginSubmit">Se connecter</button>
+      </form>
+    </section>
+
+    <!-- ======= DOUBLE AUTHENTIFICATION ======= -->
+    <section class="adm-login" id="mfaView" hidden>
+      <h1 id="mfaTitle">Code de vérification</h1>
+
+      <div id="mfaEnroll" hidden>
+        <p>Pour protéger le site, la connexion demande un code en plus du mot de passe.</p>
+        <ol class="adm-steps">
+          <li>Installez sur votre téléphone une application d'authentification (Google Authenticator, Microsoft Authenticator…).</li>
+          <li>Dans l'application, ajoutez un compte et scannez ce QR code :</li>
+        </ol>
+        <img class="adm-qr" id="mfaQr" alt="QR code à scanner avec l'application d'authentification" width="200" height="200" />
+        <p class="adm-hint">Impossible de scanner ? Saisissez cette clé dans l'application :<br /><code id="mfaSecret"></code></p>
+        <p>3. Saisissez le code à 6 chiffres affiché par l'application.</p>
+      </div>
+
+      <p id="mfaVerifyIntro" hidden>Ouvrez votre application d'authentification et saisissez le code à 6 chiffres affiché pour Utopi'C.</p>
+
+      <form id="mfaForm" novalidate>
+        <label for="mfaCode">Code à 6 chiffres</label>
+        <input type="text" id="mfaCode" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required />
+        <p class="adm-error" id="mfaError" role="alert"></p>
+        <button type="submit" class="adm-btn adm-btn--gold" id="mfaSubmit">Valider</button>
+      </form>
+      <button type="button" class="adm-btn adm-btn--link adm-mfa__cancel" id="mfaCancel">Annuler et se déconnecter</button>
+    </section>
+
+    <!-- ======= APPLICATION ======= -->
+    <section class="adm-app" id="appView" hidden>
+
+      <nav class="adm-tabs" role="tablist" aria-label="Rubriques">
+        <button type="button" role="tab" id="tab-avis" aria-controls="panel-avis" aria-selected="true">Avis &amp; articles de presse</button>
+        <button type="button" role="tab" id="tab-projets" aria-controls="panel-projets" aria-selected="false" tabindex="-1">Projets</button>
+      </nav>
+
+      <div role="tabpanel" id="panel-avis" aria-labelledby="tab-avis">
+        <div class="adm-panel__head">
+          <div>
+            <h1>Avis &amp; articles de presse</h1>
+            <p class="adm-hint">Affichés dans le carrousel « Ils racontent mon univers » de l'accueil, dans cet ordre.</p>
+          </div>
+          <div class="adm-panel__actions">
+            <button type="button" class="adm-btn adm-btn--gold" data-new-avis="avis">+ Ajouter un avis</button>
+            <button type="button" class="adm-btn adm-btn--navy" data-new-avis="article">+ Ajouter un article</button>
+          </div>
+        </div>
+        <ol class="adm-list" id="avisList"></ol>
+      </div>
+
+      <div role="tabpanel" id="panel-projets" aria-labelledby="tab-projets" hidden>
+        <div class="adm-panel__head">
+          <div>
+            <h1>Projets</h1>
+            <p class="adm-hint">Affichés sur les pages Identité visuelle, Print et Digital, dans cet ordre.</p>
+          </div>
+          <div class="adm-panel__actions">
+            <button type="button" class="adm-btn adm-btn--gold" id="newProjetBtn">+ Ajouter un projet</button>
+          </div>
+        </div>
+        <div id="projetsGroups"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ======= FORMULAIRE AVIS / ARTICLE ======= -->
+  <dialog class="adm-dialog" id="avisDialog" aria-labelledby="avisDialogTitle">
+    <form id="avisForm" method="dialog" novalidate>
+      <h2 id="avisDialogTitle">Avis</h2>
+
+      <fieldset class="adm-type">
+        <legend>Type d'entrée</legend>
+        <label><input type="radio" name="type" value="avis" checked /> Avis client <small>(avec étoiles)</small></label>
+        <label><input type="radio" name="type" value="article" /> Article de presse <small>(avec lien)</small></label>
+      </fieldset>
+
+      <label for="avisAuteur" id="avisAuteurLabel">Nom du client</label>
+      <input type="text" id="avisAuteur" required maxlength="120" />
+
+      <label for="avisTexte" id="avisTexteLabel">Texte de l'avis</label>
+      <textarea id="avisTexte" rows="5" required maxlength="2000"></textarea>
+
+      <div data-only="avis">
+        <label for="avisNote">Note</label>
+        <select id="avisNote">
+          <option value="5">★★★★★ (5)</option>
+          <option value="4">★★★★ (4)</option>
+          <option value="3">★★★ (3)</option>
+          <option value="2">★★ (2)</option>
+          <option value="1">★ (1)</option>
+        </select>
+      </div>
+
+      <div data-only="article">
+        <label for="avisLien">Lien vers l'article <small>(facultatif)</small></label>
+        <input type="url" id="avisLien" maxlength="500" placeholder="https://…" />
+
+        <span class="adm-label">Image de l'article <small>(facultatif)</small></span>
+        <div class="adm-upload" data-upload="avis">
+          <img class="adm-upload__preview" alt="Aperçu de l'image" hidden />
+          <div>
+            <input type="file" id="avisFile" accept="image/jpeg,image/png,image/webp" class="adm-sr" />
+            <label for="avisFile" class="adm-btn adm-btn--ghost">Choisir une image…</label>
+            <button type="button" class="adm-btn adm-btn--link" data-clear-image>Retirer l'image</button>
+            <p class="adm-hint adm-upload__status" aria-live="polite">JPG, PNG ou WebP · 5 Mo max</p>
+          </div>
+        </div>
+      </div>
+
+      <label for="avisOrdre">Position dans la liste</label>
+      <input type="number" id="avisOrdre" min="0" max="9999" step="1" />
+
+      <p class="adm-error" role="alert"></p>
+      <div class="adm-dialog__actions">
+        <button type="button" class="adm-btn adm-btn--ghost" data-close>Annuler</button>
+        <button type="submit" class="adm-btn adm-btn--gold">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ======= FORMULAIRE PROJET ======= -->
+  <dialog class="adm-dialog" id="projetDialog" aria-labelledby="projetDialogTitle">
+    <form id="projetForm" method="dialog" novalidate>
+      <h2 id="projetDialogTitle">Projet</h2>
+
+      <label for="projetCategorie">Catégorie</label>
+      <select id="projetCategorie" required>
+        <option value="identite-visuelle">Identité visuelle</option>
+        <option value="print">Print</option>
+        <option value="digital">Digital</option>
+      </select>
+
+      <label for="projetTitre">Titre</label>
+      <input type="text" id="projetTitre" required maxlength="200" />
+
+      <label for="projetDescription">Description <small>(facultatif)</small></label>
+      <textarea id="projetDescription" rows="3" maxlength="2000"></textarea>
+
+      <span class="adm-label">Image du projet</span>
+      <div class="adm-upload" data-upload="projet">
+        <img class="adm-upload__preview" alt="Aperçu de l'image" hidden />
+        <div>
+          <input type="file" id="projetFile" accept="image/jpeg,image/png,image/webp" class="adm-sr" />
+          <label for="projetFile" class="adm-btn adm-btn--ghost">Choisir une image…</label>
+          <p class="adm-hint adm-upload__status" aria-live="polite">JPG, PNG ou WebP · 5 Mo max</p>
+        </div>
+      </div>
+
+      <label for="projetOrdre">Position dans la catégorie</label>
+      <input type="number" id="projetOrdre" min="0" max="9999" step="1" />
+
+      <p class="adm-error" role="alert"></p>
+      <div class="adm-dialog__actions">
+        <button type="button" class="adm-btn adm-btn--ghost" data-close>Annuler</button>
+        <button type="submit" class="adm-btn adm-btn--gold">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ======= CONFIRMATION ======= -->
+  <dialog class="adm-dialog adm-dialog--small" id="confirmDialog" aria-labelledby="confirmText">
+    <form method="dialog">
+      <p id="confirmText"></p>
+      <div class="adm-dialog__actions">
+        <button type="submit" value="cancel" class="adm-btn adm-btn--ghost">Annuler</button>
+        <button type="submit" value="ok" class="adm-btn adm-btn--danger">Supprimer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="adm-toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
