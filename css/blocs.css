@@ -1,0 +1,63 @@
+/* Composants ajoutés depuis le backoffice (js/blocks.js). Réutilise les variables et classes de style.css. */
+.blk { padding: 4rem 2rem; background: var(--color-white); }
+.blk--beige { background: var(--color-cream); }
+.blk__inner { max-width: 1100px; margin: 0 auto; }
+
+.blk--titre { padding-block: 3rem 1rem; }
+.blk--titre .section-header { margin-bottom: 0; }
+
+.blk--texte-image .blk__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.blk--texte-image.blk--img-gauche .blk__media { order: -1; }
+.blk--texte-image.blk--sans-image .blk__inner { grid-template-columns: 1fr; max-width: 760px; }
+.blk__media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; }
+.blk__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-navy);
+  margin-bottom: 1rem;
+}
+.blk__text .section-label { display: block; }
+.blk__text p { font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; }
+.blk__text .btn { margin-top: 0.6rem; }
+
+.blk--cta { text-align: center; }
+.blk--cta p {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: var(--color-navy);
+  margin-bottom: 1.4rem;
+}
+
+.blk--cartes .section-header { margin-bottom: 2rem; }
+.blk-cartes__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.blk-carte {
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--color-white);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+a.blk-carte:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(18, 38, 62, 0.14); }
+.blk-carte__img { aspect-ratio: 3 / 4; overflow: hidden; }
+.blk-carte__img img { width: 100%; height: 100%; object-fit: cover; }
+.blk-carte__label {
+  display: block;
+  padding: 0.7rem 1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--color-white);
+  background: var(--color-gold);
+}
+.blk-carte:nth-child(2) .blk-carte__label { background: var(--color-coral); }
+.blk-carte:nth-child(3) .blk-carte__label { background: var(--color-teal); }
+
+@media (max-width: 768px) {
+  .blk { padding: 3rem 1.25rem; }
+  .blk--texte-image .blk__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .blk--texte-image.blk--img-gauche .blk__media { order: 0; }
+}

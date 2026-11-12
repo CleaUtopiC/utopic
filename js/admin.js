@@ -94,6 +94,9 @@
     $('textesList').replaceChildren();
     textes.fields = [];
     textes.loaded = false;
+    blocs.loaded = false;
+    blocs.rows = [];
+    $('blocsList').replaceChildren();
     $('userEmail').textContent = '';
   }
 
@@ -234,6 +237,7 @@
     }
     tab.focus();
     if (tab.id === 'tab-textes') openTextes();
+    if (tab.id === 'tab-pages') openBlocs();
   }
   tabs.forEach((tab, i) => {
     tab.addEventListener('click', () => selectTab(tab));
@@ -282,6 +286,8 @@
     );
   }
 
+  const reload = { avis: () => loadAvis(), projets: () => loadProjets(), sections: () => loadBlocs() };
+
   // Réordonne un groupe (swap + renumérotation 1..n) et n'enregistre que les lignes modifiées.
   async function move(table, group, index, delta) {
     const target = index + delta;
@@ -297,7 +303,7 @@
     );
     const failed = results.find((r) => r.error || !r.data?.length);
     if (failed) toast(friendlyError(failed.error || { code: '42501' }), true);
-    return table === 'avis' ? loadAvis() : loadProjets();
+    return reload[table]();
   }
 
   async function removeRow(table, id, label) {
@@ -305,7 +311,7 @@
     const { data, error } = await db.from(table).delete().eq('id', id).select('id');
     if (error || !data?.length) { toast(friendlyError(error || { code: '42501' }), true); return; }
     toast('Supprimé.');
-    return table === 'avis' ? loadAvis() : loadProjets();
+    return reload[table]();
   }
 
   // ---------- Avis & articles ----------
@@ -530,31 +536,34 @@
     return jpg || png || webp;
   }
 
+  // Valide puis envoie une image dans le bucket `images`. Renvoie { url } ou { error }.
+  async function sendImage(file, folder) {
+    const ext = IMAGE_TYPES[file.type];
+    if (!ext || !(await hasImageSignature(file))) return { error: 'Format non accepté : choisissez un JPG, PNG ou WebP.' };
+    if (file.size > MAX_IMAGE_BYTES) return { error: 'Image trop lourde (5 Mo maximum).' };
+    const path = `${folder}/${new Date().getFullYear()}/${crypto.randomUUID()}.${ext}`;
+    const { error } = await db.storage.from('images').upload(path, file, {
+      contentType: file.type, cacheControl: '31536000', upsert: false
+    });
+    if (error) return { error: friendlyError(error) };
+    return { url: db.storage.from('images').getPublicUrl(path).data.publicUrl };
+  }
+
   async function uploadImage(scope, input) {
     const file = input.files[0];
     input.value = '';
     if (!file) return;
     const box = document.querySelector(`[data-upload="${scope}"]`);
     const status = box.querySelector('.adm-upload__status');
-    const ext = IMAGE_TYPES[file.type];
-
-    if (!ext || !(await hasImageSignature(file))) { status.textContent = 'Format non accepté : choisissez un JPG, PNG ou WebP.'; return; }
-    if (file.size > MAX_IMAGE_BYTES) { status.textContent = 'Image trop lourde (5 Mo maximum).'; return; }
-
     const folder = scope === 'projet' ? `projets/${$('projetCategorie').value}` : 'avis';
-    const path = `${folder}/${new Date().getFullYear()}/${crypto.randomUUID()}.${ext}`;
 
     status.textContent = 'Envoi en cours…';
     const submit = box.closest('form').querySelector('button[type="submit"]');
     submit.disabled = true;
-    const { error } = await db.storage.from('images').upload(path, file, {
-      contentType: file.type, cacheControl: '31536000', upsert: false
-    });
+    const res = await sendImage(file, folder);
     submit.disabled = false;
-    if (error) { status.textContent = friendlyError(error); return; }
-
-    const { data } = db.storage.from('images').getPublicUrl(path);
-    setImage(scope, data.publicUrl);
+    if (res.error) { status.textContent = res.error; return; }
+    setImage(scope, res.url);
   }
 
   $('avisFile').addEventListener('change', (e) => uploadImage('avis', e.target));
@@ -744,6 +753,155 @@
 
   window.addEventListener('beforeunload', (e) => {
     if (textesDirty().length) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  // ---------- Composants des pages ----------
+
+  const B = window.UtopicBlocks;
+  const BLOC_PAGES = TEXTE_PAGES.filter((p) => p.id !== 'site');
+  const blocs = { page: null, rows: [], loaded: false, fieldState: {} };
+
+  async function loadBlocs() {
+    const { data, error } = await db.from('sections').select('*').eq('page', blocs.page).order('ordre').order('id');
+    if (error) { toast(friendlyError(error), true); return; }
+    blocs.rows = data;
+    renderBlocsList();
+  }
+
+  function renderBlocsList() {
+    const list = $('blocsList');
+    if (!blocs.rows.length) {
+      list.replaceChildren(el('li', { class: 'adm-empty', text: 'Aucun composant ajouté sur cette page.' }));
+      return;
+    }
+    list.replaceChildren(...blocs.rows.map((r, i) => {
+      const def = B.TYPES[r.type];
+      const props = r.props || {};
+      return renderItem({
+        item: { image_url: B.safeUrl(props.image || props.c1_image || '') },
+        index: i, total: blocs.rows.length,
+        badge: { kind: r.visible ? 'avis' : 'article', text: (def?.label || r.type) + (r.visible ? '' : ' · masqué') },
+        title: B.summary(r.type, props),
+        excerpt: r.type === 'texte_image' ? props.texte : null,
+        onEdit: () => openBloc(r),
+        onDelete: () => removeRow('sections', r.id, B.summary(r.type, props)),
+        onMove: (d) => move('sections', blocs.rows, i, d)
+      });
+    }));
+  }
+
+  async function openBlocs() {
+    if (blocs.loaded) return;
+    blocs.loaded = true;
+    $('blocsPage').replaceChildren(...BLOC_PAGES.map((p) => el('option', { value: p.id, text: p.label })));
+    blocs.page = BLOC_PAGES[0].id;
+    $('blocType').replaceChildren(...B.ORDER.map((t) => el('option', { value: t, text: B.TYPES[t].label })));
+    await loadBlocs();
+  }
+
+  $('blocsPage').addEventListener('change', async (e) => {
+    blocs.page = e.target.value;
+    await loadBlocs();
+  });
+
+  // Champ image du formulaire dynamique : aperçu, envoi, retrait.
+  function imageField(f, props) {
+    const st = { url: props[f.k] || '' };
+    blocs.fieldState[f.k] = st;
+    const id = `bloc-${f.k}`;
+    const preview = el('img', { class: 'adm-upload__preview', alt: "Aperçu de l'image", hidden: !st.url });
+    if (st.url) preview.src = st.url;
+    const status = el('p', { class: 'adm-hint adm-upload__status', 'aria-live': 'polite', text: st.url ? 'Image prête.' : 'JPG, PNG ou WebP · 5 Mo max' });
+    const input = el('input', { type: 'file', id, accept: 'image/jpeg,image/png,image/webp', class: 'adm-sr' });
+    const clear = el('button', { type: 'button', class: 'adm-btn adm-btn--link', text: "Retirer l'image", hidden: !st.url });
+    const set = (url) => {
+      st.url = url;
+      preview.hidden = !url;
+      if (url) preview.src = url; else preview.removeAttribute('src');
+      clear.hidden = !url;
+      status.textContent = url ? 'Image prête.' : 'JPG, PNG ou WebP · 5 Mo max';
+    };
+    input.addEventListener('change', async () => {
+      const file = input.files[0];
+      input.value = '';
+      if (!file) return;
+      const submit = $('blocForm').querySelector('button[type="submit"]');
+      status.textContent = 'Envoi en cours…';
+      submit.disabled = true;
+      const res = await sendImage(file, 'blocs');
+      submit.disabled = false;
+      if (res.error) status.textContent = res.error; else set(res.url);
+    });
+    clear.addEventListener('click', () => set(''));
+    return el('div', { class: 'adm-upload' }, preview,
+      el('div', {}, input, el('label', { for: id, class: 'adm-btn adm-btn--ghost', text: 'Choisir une image…' }), clear, status));
+  }
+
+  function buildBlocFields(type, props) {
+    blocs.fieldState = {};
+    const def = B.TYPES[type];
+    $('blocTypeDesc').textContent = def.desc;
+    const nodes = [];
+    for (const f of def.fields) {
+      if (f.g) nodes.push(el('h3', { class: 'adm-bloc-group', text: f.g }));
+      const id = `bloc-${f.k}`;
+      const label = el('label', { for: f.t === 'image' ? null : id, class: f.t === 'image' ? 'adm-label' : null }, f.l + (f.req ? ' *' : ''));
+      let input;
+      if (f.t === 'textarea') {
+        input = el('textarea', { id, rows: '6', maxlength: String(f.max || 3000) });
+        input.value = props[f.k] || '';
+      } else if (f.t === 'select') {
+        input = el('select', { id }, ...f.opts.map(([v, l]) => el('option', { value: v, text: l })));
+        input.value = props[f.k] || f.opts[0][0];
+      } else if (f.t === 'image') {
+        input = imageField(f, props);
+      } else {
+        input = el('input', { type: 'text', id, maxlength: String(f.max || 200), placeholder: f.t === 'link' ? 'https://… ou contact.html' : null });
+        input.value = props[f.k] || '';
+      }
+      if (f.t !== 'image') input.dataset.field = f.k;
+      nodes.push(label, input, f.hint ? el('p', { class: 'adm-hint', text: f.hint }) : null);
+    }
+    $('blocFields').replaceChildren(...nodes.filter(Boolean));
+  }
+
+  function readBlocProps(type) {
+    const raw = {};
+    for (const f of B.TYPES[type].fields) {
+      raw[f.k] = f.t === 'image'
+        ? (blocs.fieldState[f.k]?.url || '')
+        : ($('blocFields').querySelector(`[data-field="${f.k}"]`)?.value || '');
+    }
+    return B.clean(type, raw);
+  }
+
+  function openBloc(row) {
+    state.editing = row || null;
+    $('blocForm').querySelector('.adm-error').textContent = '';
+    $('blocDialogTitle').textContent = row ? 'Modifier le composant' : 'Ajouter un composant';
+    $('blocType').value = row?.type || B.ORDER[0];
+    $('blocType').disabled = !!row;
+    $('blocVisible').checked = row ? row.visible : true;
+    buildBlocFields($('blocType').value, row?.props || {});
+    $('blocDialog').showModal();
+    (row ? $('blocFields').querySelector('input,textarea,select') : $('blocType'))?.focus();
+  }
+
+  $('newBlocBtn').addEventListener('click', () => openBloc(null));
+  $('blocType').addEventListener('change', () => buildBlocFields($('blocType').value, {}));
+  $('blocForm').addEventListener('input', () => { $('blocForm').querySelector('.adm-error').textContent = ''; });
+
+  $('blocForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const type = $('blocType').value;
+    const props = readBlocProps(type);
+    const err = B.validate(type, props);
+    if (err) { form.querySelector('.adm-error').textContent = err; return; }
+
+    const payload = { page: blocs.page, type, props, visible: $('blocVisible').checked };
+    if (!state.editing) payload.ordre = nextOrdre(blocs.rows);
+    await save('sections', payload, form, $('blocDialog'), loadBlocs);
   });
 
   // ---------- Démarrage ----------

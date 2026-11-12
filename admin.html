@@ -12,11 +12,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/logos/logo-utopic-mini.png" />
   <script src="js/admin-guard.js"></script>
-  <link rel="stylesheet" href="css/admin.css?v=3" />
+  <link rel="stylesheet" href="css/admin.css?v=4" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.min.js" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/edit-text.js"></script>
-  <script src="js/admin.js?v=4" defer></script>
+  <script src="js/blocks.js"></script>
+  <script src="js/admin.js?v=5" defer></script>
 </head>
 <body>
 
@@ -84,6 +85,7 @@
         <button type="button" role="tab" id="tab-avis" aria-controls="panel-avis" aria-selected="true">Avis &amp; articles de presse</button>
         <button type="button" role="tab" id="tab-projets" aria-controls="panel-projets" aria-selected="false" tabindex="-1">Projets</button>
         <button type="button" role="tab" id="tab-textes" aria-controls="panel-textes" aria-selected="false" tabindex="-1">Textes du site</button>
+        <button type="button" role="tab" id="tab-pages" aria-controls="panel-pages" aria-selected="false" tabindex="-1">Composants des pages</button>
       </nav>
 
       <div role="tabpanel" id="panel-avis" aria-labelledby="tab-avis">
@@ -128,6 +130,23 @@
         </div>
         <p class="adm-error" id="textesError" role="alert"></p>
         <ol class="adm-textes" id="textesList"></ol>
+      </div>
+
+      <div role="tabpanel" id="panel-pages" aria-labelledby="tab-pages" hidden>
+        <div class="adm-panel__head">
+          <div>
+            <h1>Composants des pages</h1>
+            <p class="adm-hint">Ajoutez des blocs (texte + image, titre, bandeau d'appel, cartes) à la fin d'une page, juste avant le pied de page. Les sections déjà présentes se modifient dans « Textes du site ».</p>
+          </div>
+          <div class="adm-panel__actions">
+            <button type="button" class="adm-btn adm-btn--gold" id="newBlocBtn">+ Ajouter un composant</button>
+          </div>
+        </div>
+        <div class="adm-textes__bar">
+          <label for="blocsPage">Page</label>
+          <select id="blocsPage"></select>
+        </div>
+        <ol class="adm-list" id="blocsList"></ol>
       </div>
 
     </section>
@@ -218,6 +237,27 @@
 
       <label for="projetOrdre">Position dans la catégorie</label>
       <input type="number" id="projetOrdre" min="0" max="9999" step="1" />
+
+      <p class="adm-error" role="alert"></p>
+      <div class="adm-dialog__actions">
+        <button type="button" class="adm-btn adm-btn--ghost" data-close>Annuler</button>
+        <button type="submit" class="adm-btn adm-btn--gold">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- ======= FORMULAIRE COMPOSANT ======= -->
+  <dialog class="adm-dialog" id="blocDialog" aria-labelledby="blocDialogTitle">
+    <form id="blocForm" method="dialog" novalidate>
+      <h2 id="blocDialogTitle">Composant</h2>
+
+      <label for="blocType">Type de composant</label>
+      <select id="blocType"></select>
+      <p class="adm-hint" id="blocTypeDesc"></p>
+
+      <div id="blocFields"></div>
+
+      <label class="adm-check"><input type="checkbox" id="blocVisible" checked /> Visible sur le site</label>
 
       <p class="adm-error" role="alert"></p>
       <div class="adm-dialog__actions">
