@@ -578,7 +578,7 @@
   const TAG_LABELS = { H1: 'Titre principal', H2: 'Titre', H3: 'Sous-titre', H4: 'Sous-titre', P: 'Paragraphe', A: 'Lien', BUTTON: 'Bouton', LABEL: 'Intitulé de champ', LI: 'Élément de liste' };
   const MAX_TEXTE = 5000;
 
-  const textes = { page: null, fields: [], loaded: false, busy: false };
+  const textes = { page: null, fields: [], blocs: [], loaded: false, busy: false };
 
   function textesDirty() {
     return textes.fields.filter((f) => f.value !== f.initial);
@@ -589,6 +589,10 @@
     const invalid = textes.fields.some((f) => f.error);
     $('textesSave').disabled = textes.busy || !n || invalid;
     $('textesCount').textContent = n ? `${n} modification${n > 1 ? 's' : ''} non enregistrée${n > 1 ? 's' : ''}` : '';
+    for (const b of textes.blocs) {
+      const d = b.fields.filter((f) => f.value !== f.initial).length;
+      b.count.textContent = d ? `${d} modifié${d > 1 ? 's' : ''}` : '';
+    }
   }
 
   function checkTexte(f) {
@@ -598,7 +602,7 @@
     return '';
   }
 
-  function renderTexte(f, i) {
+  function renderTexte(f, i, n) {
     const id = `texte-${i}`;
     const label = f.kind === 'tel' ? 'Téléphone' : f.kind === 'mailto' ? 'E-mail' : (TAG_LABELS[f.tag] || 'Texte');
     const area = el('textarea', { id, rows: String(Math.min(12, Math.max(1, f.value.split('\n').length, Math.ceil(f.value.length / 70)))), maxlength: String(MAX_TEXTE + 100) });
@@ -607,9 +611,10 @@
     const tag = el('span', { class: 'adm-text__tag' });
     const reset = el('button', { type: 'button', class: 'adm-btn adm-btn--link', text: "Rétablir le texte d'origine" });
     const item = el('li', { class: 'adm-text' },
-      el('div', { class: 'adm-text__head' }, el('label', { for: id, text: `${i + 1}. ${label}` }), tag, reset),
+      el('div', { class: 'adm-text__head' }, el('label', { for: id, text: `${n}. ${label}` }), tag, reset),
       area, note);
 
+    f.item = item;
     function sync() {
       f.value = area.value.replace(/\r\n/g, '\n').trim();
       f.error = checkTexte(f);
@@ -623,8 +628,30 @@
     area.addEventListener('input', sync);
     reset.addEventListener('click', () => { area.value = f.def; sync(); area.focus(); });
     sync();
-    item.classList.toggle('is-dirty', f.value !== f.initial);
     return item;
+  }
+
+  // Un bloc repliable par composant de la page (data-bloc dans le HTML), dans l'ordre de la page.
+  function renderBlocs() {
+    const groups = new Map();
+    textes.fields.forEach((f, i) => {
+      if (!groups.has(f.bloc)) groups.set(f.bloc, []);
+      groups.get(f.bloc).push({ f, i });
+    });
+    textes.blocs = [];
+    let first = true;
+    const nodes = [...groups].map(([name, items]) => {
+      const count = el('span', { class: 'adm-bloc__count' });
+      const list = el('ol', { class: 'adm-textes' }, ...items.map(({ f, i }, k) => renderTexte(f, i, k + 1)));
+      const box = el('details', { class: 'adm-bloc', open: first },
+        el('summary', {}, el('span', { class: 'adm-bloc__name', text: name }), el('span', { class: 'adm-bloc__n', text: `${items.length} texte${items.length > 1 ? 's' : ''}` }), count),
+        list);
+      first = false;
+      textes.blocs.push({ fields: items.map((x) => x.f), count });
+      return el('li', {}, box);
+    });
+    $('textesList').replaceChildren(...nodes);
+    updateTextesBar();
   }
 
   async function loadTextesPage(pageId) {
@@ -632,6 +659,7 @@
     $('textesError').textContent = '';
     $('textesList').replaceChildren(el('li', { class: 'adm-loading', text: 'Chargement…' }));
     textes.fields = [];
+    textes.blocs = [];
     textes.page = pageId;
     updateTextesBar();
 
@@ -653,9 +681,9 @@
         seen.add(cle);
         const def = UtopicText.read(node);
         const value = (overrides.get(cle) ?? def).trim();
-        textes.fields.push({ cle, def, value, initial: value, tag: node.tagName, kind: node.dataset.editLink || '', error: '' });
+        textes.fields.push({ cle, def, value, initial: value, bloc: node.closest('[data-bloc]')?.dataset.bloc || 'Autres textes', tag: node.tagName, kind: node.dataset.editLink || '', error: '' });
       }
-      $('textesList').replaceChildren(...textes.fields.map(renderTexte));
+      renderBlocs();
       if (!textes.fields.length) $('textesList').replaceChildren(el('li', { class: 'adm-empty', text: 'Aucun texte modifiable sur cette page.' }));
       updateTextesBar();
     } catch (err) {
@@ -705,8 +733,7 @@
     }
 
     textes.busy = false;
-    for (const li of $('textesList').children) li.classList.toggle('is-dirty', false);
-    textes.fields.forEach((f, i) => { if (f.value !== f.initial) $('textesList').children[i]?.classList.add('is-dirty'); });
+    for (const f of textes.fields) f.item?.classList.toggle('is-dirty', f.value !== f.initial);
     updateTextesBar();
     if (!failed) toast('Textes enregistrés. Ils apparaissent sur le site dans quelques secondes.');
   });
