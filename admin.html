@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data: blob:; connect-src https://zyeqeigakhaticuwqgji.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https: data: blob:; connect-src 'self' https://zyeqeigakhaticuwqgji.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>Espace admin — Utopi'C</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,7 +15,8 @@
   <link rel="stylesheet" href="css/admin.css?v=2" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.2/dist/umd/supabase.min.js" integrity="sha384-WgXwGL6fUsYJWNaKJgVbrJKGRQwc1vieh2oy4kw9nXqpNDz3tdSsqEYUgeHD/NuF" crossorigin="anonymous"></script>
   <script src="js/supabase-client.js"></script>
-  <script src="js/admin.js?v=2" defer></script>
+  <script src="js/edit-text.js"></script>
+  <script src="js/admin.js?v=3" defer></script>
 </head>
 <body>
 
@@ -82,6 +83,7 @@
       <nav class="adm-tabs" role="tablist" aria-label="Rubriques">
         <button type="button" role="tab" id="tab-avis" aria-controls="panel-avis" aria-selected="true">Avis &amp; articles de presse</button>
         <button type="button" role="tab" id="tab-projets" aria-controls="panel-projets" aria-selected="false" tabindex="-1">Projets</button>
+        <button type="button" role="tab" id="tab-textes" aria-controls="panel-textes" aria-selected="false" tabindex="-1">Textes du site</button>
       </nav>
 
       <div role="tabpanel" id="panel-avis" aria-labelledby="tab-avis">
@@ -109,6 +111,23 @@
           </div>
         </div>
         <div id="projetsGroups"></div>
+      </div>
+
+      <div role="tabpanel" id="panel-textes" aria-labelledby="tab-textes" hidden>
+        <div class="adm-panel__head">
+          <div>
+            <h1>Textes du site</h1>
+            <p class="adm-hint">Choisissez une page, modifiez les textes puis enregistrez. Un retour à la ligne dans un champ crée un retour à la ligne sur le site.</p>
+          </div>
+        </div>
+        <div class="adm-textes__bar">
+          <label for="textesPage">Page</label>
+          <select id="textesPage"></select>
+          <button type="button" class="adm-btn adm-btn--gold" id="textesSave" disabled>Enregistrer les modifications</button>
+          <span class="adm-hint" id="textesCount" aria-live="polite"></span>
+        </div>
+        <p class="adm-error" id="textesError" role="alert"></p>
+        <ol class="adm-textes" id="textesList"></ol>
       </div>
 
     </section>

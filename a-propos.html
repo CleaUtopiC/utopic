@@ -45,25 +45,25 @@
 
         <nav class="header-nav" id="navMenu" aria-label="Navigation principale">
           <ul class="header-nav__list">
-            <li><a href="index.html" class="header-nav__link">Accueil</a></li>
-            <li><a href="a-propos.html" class="header-nav__link header-nav__link--active">À propos</a></li>
+            <li><a data-edit="site_accueil" href="index.html" class="header-nav__link">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html" class="header-nav__link header-nav__link--active">À propos</a></li>
             <li class="header-nav__item--dropdown">
               <a href="portfolio.html" class="header-nav__link">
                 Portfolio
                 <svg class="header-nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               </a>
               <ul class="header-nav__dropdown">
-                <li><a href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
-                <li><a href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
-                <li><a href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
+                <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
+                <li><a data-edit="site_communication_print" href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
+                <li><a data-edit="site_communication_digitale" href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
               </ul>
             </li>
-            <li class="nav-mobile-only"><a href="contact.html" class="header-nav__link">Contact</a></li>
+            <li class="nav-mobile-only"><a data-edit="site_contact" href="contact.html" class="header-nav__link">Contact</a></li>
           </ul>
         </nav>
 
         <div class="header-right">
-          <a href="contact.html" class="btn-contact-bubble">Contact</a>
+          <a data-edit="site_contact" href="contact.html" class="btn-contact-bubble">Contact</a>
           <button class="header-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -82,15 +82,15 @@
 
         <!-- Texte à GAUCHE -->
         <div class="ap-intro__text">
-          <span class="section-label">À propos</span>
-          <h1 class="ap-intro__title">Hello,<br />je me présente&nbsp;!</h1>
-          <p class="ap-intro__body">
+          <span data-edit="a_propos" class="section-label">À propos</span>
+          <h1 data-edit="apropos_titre" class="ap-intro__title">Hello,<br />je me présente&nbsp;!</h1>
+          <p data-edit="apropos_p1" class="ap-intro__body">
             Cléa LAUBIER, communicante passionnée de 25 ans, diplômée d'un Bachelor en Créative Communication et Digital Media, ainsi qu'un Master 2 en Management professionnel de la Communication.
           </p>
-          <p class="ap-intro__body">
+          <p data-edit="apropos_p2" class="ap-intro__body">
             Curieuse de découvrir les différents secteurs, et de relever de nouveaux défis, j'ai décidé de créer mon auto-entreprise, Utopi'C. Mon parcours m'a permis d'allier créativité et stratégie pour vous accompagner dans tous vos besoins.
           </p>
-          <p class="ap-intro__body">
+          <p data-edit="apropos_p3" class="ap-intro__body">
             Aujourd'hui, je souhaite mettre mon énergie et ma créativité au service d'une équipe et contribuer à des projets ambitieux.
           </p>
         </div>
@@ -112,8 +112,8 @@
       <div class="ap-formation__inner">
 
         <header class="section-header">
-          <span class="section-label">Formations</span>
-          <h2 class="section-title">Mon parcours</h2>
+          <span data-edit="formations" class="section-label">Formations</span>
+          <h2 data-edit="mon_parcours" class="section-title">Mon parcours</h2>
         </header>
 
         <div class="formation-list">
@@ -123,10 +123,10 @@
               <img src="assets/logos/logo-supdecom.webp" alt="SupDeCom" class="formation-item__logo" />
             </div>
             <div class="formation-item__content">
-              <span class="formation-item__school">SupDeCom</span>
-              <span class="formation-item__location">Nantes (44)</span>
-              <p class="formation-item__degree">Master manager professionnel de la communication</p>
-              <span class="formation-item__years">2021 – 2023</span>
+              <span data-edit="supdecom" class="formation-item__school">SupDeCom</span>
+              <span data-edit="nantes_44" class="formation-item__location">Nantes (44)</span>
+              <p data-edit="master_manager_professionnel_de_la" class="formation-item__degree">Master manager professionnel de la communication</p>
+              <span data-edit="2021_2023" class="formation-item__years">2021 – 2023</span>
             </div>
           </div>
 
@@ -135,10 +135,10 @@
               <img src="assets/logos/logo-estacom.png" alt="Estacom" class="formation-item__logo" />
             </div>
             <div class="formation-item__content">
-              <span class="formation-item__school">Estacom</span>
-              <span class="formation-item__location">Bourges (18)</span>
-              <p class="formation-item__degree">Bachelor créative communication et digital média</p>
-              <span class="formation-item__years">2020 – 2021</span>
+              <span data-edit="estacom" class="formation-item__school">Estacom</span>
+              <span data-edit="bourges_18" class="formation-item__location">Bourges (18)</span>
+              <p data-edit="bachelor_creative_communication_et_digit" class="formation-item__degree">Bachelor créative communication et digital média</p>
+              <span data-edit="2020_2021" class="formation-item__years">2020 – 2021</span>
             </div>
           </div>
 
@@ -147,10 +147,10 @@
               <img src="assets/logos/logo-sainte-croix.png" alt="Sainte-Croix Saint-Euverte" class="formation-item__logo" />
             </div>
             <div class="formation-item__content">
-              <span class="formation-item__school">Sainte Croix Saint-Euverte</span>
-              <span class="formation-item__location">Orléans (45)</span>
-              <p class="formation-item__degree">BTS Technico-commercial</p>
-              <span class="formation-item__years">2018 – 2020</span>
+              <span data-edit="sainte_croix_saint_euverte" class="formation-item__school">Sainte Croix Saint-Euverte</span>
+              <span data-edit="orleans_45" class="formation-item__location">Orléans (45)</span>
+              <p data-edit="bts_technico_commercial" class="formation-item__degree">BTS Technico-commercial</p>
+              <span data-edit="2018_2020" class="formation-item__years">2018 – 2020</span>
             </div>
           </div>
 
@@ -165,24 +165,24 @@
 
         <!-- Colonne expériences — fond or -->
         <div class="ap-skills__col ap-skills__col--exp">
-          <h2 class="ap-skills__col-title">Expériences</h2>
+          <h2 data-edit="experiences" class="ap-skills__col-title">Expériences</h2>
 
           <div class="exp-box">
 
             <div class="job">
               <div class="job-header">
-                <span class="job-title">Utopi'C</span>
-                <span class="job-type">Freelance</span>
-                <span class="job-date">Janvier 2024 – Aujourd'hui</span>
+                <span data-edit="utopi_c" class="job-title">Utopi'C</span>
+                <span data-edit="freelance" class="job-type">Freelance</span>
+                <span data-edit="janvier_2024_aujourd_hui" class="job-date">Janvier 2024 – Aujourd'hui</span>
               </div>
-              <span class="job-company">Auto-entreprise · Communication</span>
+              <span data-edit="auto_entreprise_communication" class="job-company">Auto-entreprise · Communication</span>
               <ul>
-                <li>Approche 360° : audit, veille concurrentielle et tendance, recommandations stratégiques, élaboration de plans de communication adaptés et mise en place d'un calendrier éditorial.</li>
-                <li>Identité de marque &amp; positionnement de marque.</li>
-                <li>Création de contenus digitaux et print : rédaction, création de visuels (photos, vidéos courtes, visuels graphiques, stories, formats engageants), newsletters, communiqués de presse.</li>
-                <li>Animation et gestion des communautés sur les réseaux sociaux : publication, modération, interaction.</li>
-                <li>Analyse de performance et d'engagement des communautés : suivi des performances et optimisation des publications.</li>
-                <li>Valorisation des lieux.</li>
+                <li data-edit="approche_360_audit_veille_concurrentiell">Approche 360° : audit, veille concurrentielle et tendance, recommandations stratégiques, élaboration de plans de communication adaptés et mise en place d'un calendrier éditorial.</li>
+                <li data-edit="identite_de_marque_positionnement_de">Identité de marque &amp; positionnement de marque.</li>
+                <li data-edit="creation_de_contenus_digitaux_et">Création de contenus digitaux et print : rédaction, création de visuels (photos, vidéos courtes, visuels graphiques, stories, formats engageants), newsletters, communiqués de presse.</li>
+                <li data-edit="animation_et_gestion_des_communautes">Animation et gestion des communautés sur les réseaux sociaux : publication, modération, interaction.</li>
+                <li data-edit="analyse_de_performance_et_d">Analyse de performance et d'engagement des communautés : suivi des performances et optimisation des publications.</li>
+                <li data-edit="valorisation_des_lieux">Valorisation des lieux.</li>
               </ul>
             </div>
 
@@ -190,60 +190,45 @@
 
             <div class="job">
               <div class="job-header">
-                <span class="job-title">Extra en restauration</span>
-                <span class="job-date">Octobre 2023 – Aujourd'hui</span>
+                <span data-edit="extra_en_restauration" class="job-title">Extra en restauration</span>
+                <span data-edit="octobre_2023_aujourd_hui" class="job-date">Octobre 2023 – Aujourd'hui</span>
               </div>
-              <span class="job-company">Cabaret l'Étincelle &amp; Launay Traiteur</span>
+              <span data-edit="cabaret_l_etincelle_launay_traiteur" class="job-company">Cabaret l'Étincelle &amp; Launay Traiteur</span>
             </div>
 
             <hr>
 
             <div class="job">
               <div class="job-header">
-                <span class="job-title">L'Étincelle Cabaret</span>
-                <span class="job-date">Septembre 2020 – Septembre 2023</span>
+                <span data-edit="l_etincelle_cabaret" class="job-title">L'Étincelle Cabaret</span>
+                <span data-edit="septembre_2020_septembre_2023" class="job-date">Septembre 2020 – Septembre 2023</span>
               </div>
-              <span class="job-company">Chargée de communication · Alternance</span>
+              <span data-edit="chargee_de_communication_alternance" class="job-company">Chargée de communication · Alternance</span>
 
-              <p class="section-label">Communication digitale &amp; réseaux sociaux</p>
+              <p data-edit="communication_digitale_reseaux_sociaux" class="section-label">Communication digitale &amp; réseaux sociaux</p>
               <ul>
-                <li>Création et gestion de comptes sociaux (calendrier éditorial, programmation, modération, analyse des performances).</li>
-                <li>Production de contenus adaptés : visuels, vidéos, photos, textes engageants.</li>
-                <li>Mise en place de campagnes de visibilité et suivi des résultats.</li>
+                <li data-edit="creation_et_gestion_de_comptes">Création et gestion de comptes sociaux (calendrier éditorial, programmation, modération, analyse des performances).</li>
+                <li data-edit="production_de_contenus_adaptes_visuels">Production de contenus adaptés : visuels, vidéos, photos, textes engageants.</li>
+                <li data-edit="mise_en_place_de_campagnes">Mise en place de campagnes de visibilité et suivi des résultats.</li>
               </ul>
 
-              <p class="section-label">Création de supports &amp; identité visuelle</p>
+              <p data-edit="creation_de_supports_identite_visuelle" class="section-label">Création de supports &amp; identité visuelle</p>
               <ul>
-                <li>Conception de supports print et digitaux (affiches, flyers, brochures, newsletters, communiqués de presse).</li>
-                <li>Déclinaison graphique d'identités de marque sur différents formats.</li>
-                <li>Shooting photo et retouche pour alimenter les supports de communication.</li>
+                <li data-edit="conception_de_supports_print_et">Conception de supports print et digitaux (affiches, flyers, brochures, newsletters, communiqués de presse).</li>
+                <li data-edit="declinaison_graphique_d_identites_de">Déclinaison graphique d'identités de marque sur différents formats.</li>
+                <li data-edit="shooting_photo_et_retouche_pour">Shooting photo et retouche pour alimenter les supports de communication.</li>
               </ul>
 
-              <p class="section-label">Stratégie &amp; gestion de projets</p>
+              <p data-edit="strategie_gestion_de_projets" class="section-label">Stratégie &amp; gestion de projets</p>
               <ul>
-                <li>Réalisation de veilles sectorielles et benchmark concurrentiel pour affiner les recommandations.</li>
-                <li>Élaboration et mise en œuvre de plans de communication adaptés aux objectifs clients.</li>
-                <li>Coordination avec prestataires externes et partenaires.</li>
+                <li data-edit="realisation_de_veilles_sectorielles_et">Réalisation de veilles sectorielles et benchmark concurrentiel pour affiner les recommandations.</li>
+                <li data-edit="elaboration_et_mise_en_uvre">Élaboration et mise en œuvre de plans de communication adaptés aux objectifs clients.</li>
+                <li data-edit="coordination_avec_prestataires_externes_">Coordination avec prestataires externes et partenaires.</li>
               </ul>
 
-              <p class="section-label">Relation client &amp; partenariats</p>
+              <p data-edit="relation_client_partenariats" class="section-label">Relation client &amp; partenariats</p>
               <ul>
-                <li>Mise en place de partenariats pour financer et diffuser des supports de communication.</li>
-              </ul>
-            </div>
-
-            <hr>
-
-            <div class="job">
-              <div class="job-header">
-                <span class="job-title">Systech</span>
-                <span class="job-date">Novembre – Décembre 2019</span>
-              </div>
-              <span class="job-company">Stage technico-commercial</span>
-              <ul>
-                <li>Relation clientèle.</li>
-                <li>Mise en place d'une CRM.</li>
-                <li>Réalisation de devis.</li>
+                <li data-edit="mise_en_place_de_partenariats">Mise en place de partenariats pour financer et diffuser des supports de communication.</li>
               </ul>
             </div>
 
@@ -251,16 +236,31 @@
 
             <div class="job">
               <div class="job-header">
-                <span class="job-title">Jobs étudiants</span>
+                <span data-edit="systech" class="job-title">Systech</span>
+                <span data-edit="novembre_decembre_2019" class="job-date">Novembre – Décembre 2019</span>
+              </div>
+              <span data-edit="stage_technico_commercial" class="job-company">Stage technico-commercial</span>
+              <ul>
+                <li data-edit="relation_clientele">Relation clientèle.</li>
+                <li data-edit="mise_en_place_d_une">Mise en place d'une CRM.</li>
+                <li data-edit="realisation_de_devis">Réalisation de devis.</li>
+              </ul>
+            </div>
+
+            <hr>
+
+            <div class="job">
+              <div class="job-header">
+                <span data-edit="jobs_etudiants" class="job-title">Jobs étudiants</span>
               </div>
               <div class="mini-jobs">
                 <div class="mini-card">
-                  <p class="role">Employée polyvalente – Saisonnière</p>
-                  <p class="org">La Case à Bois · Saint-Palais-Sur-Mer (17)</p>
+                  <p data-edit="employee_polyvalente_saisonniere" class="role">Employée polyvalente – Saisonnière</p>
+                  <p data-edit="la_case_a_bois_saint" class="org">La Case à Bois · Saint-Palais-Sur-Mer (17)</p>
                 </div>
                 <div class="mini-card">
-                  <p class="role">Employée polyvalente</p>
-                  <p class="org">Le Kiosque à Pizzas · Chartres (28)</p>
+                  <p data-edit="employee_polyvalente" class="role">Employée polyvalente</p>
+                  <p data-edit="le_kiosque_a_pizzas_chartres" class="org">Le Kiosque à Pizzas · Chartres (28)</p>
                 </div>
               </div>
             </div>
@@ -274,53 +274,53 @@
 
         <!-- Colonne compétences -->
         <div class="ap-skills__col ap-skills__col--skills">
-          <h2 class="ap-skills__col-title">Compétences</h2>
+          <h2 data-edit="competences" class="ap-skills__col-title">Compétences</h2>
 
           <!-- TODO: Cléa doit valider les textes Hard Skills et Soft Skills -->
           <div class="skills-group">
-            <h3 class="skills-group__label">Hard skills</h3>
+            <h3 data-edit="hard_skills" class="skills-group__label">Hard skills</h3>
             <p class="skills-pipe">
-              <strong>Suite Adobe</strong> : Photoshop | Illustrator | InDesign | Figma | Lightroom | Première Pro | Acrobat | Express<br />
-              <strong>Suite Microsoft</strong> : Word | Excel | Outlook<br />
-              <strong>Réseaux sociaux</strong> : Facebook | Instagram | LinkedIn | TikTok<br />
-              <strong>Outils de planification</strong> : Trello | Meta Business Suite<br />
-              <strong>Site web</strong> : Wix | Ionos | Squarespace | Base WordPress | SEO naturel<br />
-              <strong>Canva</strong><br />
-              <strong>Brevo</strong><br />
-              <strong>Certification Voltaire</strong> : 700
+              <strong data-edit="suite_adobe">Suite Adobe</strong> : Photoshop | Illustrator | InDesign | Figma | Lightroom | Première Pro | Acrobat | Express<br />
+              <strong data-edit="suite_microsoft">Suite Microsoft</strong> : Word | Excel | Outlook<br />
+              <strong data-edit="reseaux_sociaux">Réseaux sociaux</strong> : Facebook | Instagram | LinkedIn | TikTok<br />
+              <strong data-edit="outils_de_planification">Outils de planification</strong> : Trello | Meta Business Suite<br />
+              <strong data-edit="site_web">Site web</strong> : Wix | Ionos | Squarespace | Base WordPress | SEO naturel<br />
+              <strong data-edit="canva">Canva</strong><br />
+              <strong data-edit="brevo">Brevo</strong><br />
+              <strong data-edit="certification_voltaire">Certification Voltaire</strong> : 700
             </p>
           </div>
 
           <div class="skills-group">
-            <h3 class="skills-group__label">Soft skills</h3>
+            <h3 data-edit="soft_skills" class="skills-group__label">Soft skills</h3>
 
             <div class="skills-expanded">
               <div class="skill-entry">
                 <span class="skill-entry__icon">✦</span>
                 <div>
-                  <p class="skill-entry__title">Autonome &amp; proactive</p>
-                  <p class="skill-entry__desc">J'ai lancé mon auto-entreprise en communication en 2024. Depuis, je pilote seule des projets web, print &amp; réseaux sociaux, avec une approche globale allant du brief à la livraison finale.</p>
+                  <p data-edit="autonome_proactive" class="skill-entry__title">Autonome &amp; proactive</p>
+                  <p data-edit="j_ai_lance_mon_auto" class="skill-entry__desc">J'ai lancé mon auto-entreprise en communication en 2024. Depuis, je pilote seule des projets web, print &amp; réseaux sociaux, avec une approche globale allant du brief à la livraison finale.</p>
                 </div>
               </div>
               <div class="skill-entry">
                 <span class="skill-entry__icon">✦</span>
                 <div>
-                  <p class="skill-entry__title">Créative, à l'écoute &amp; force de proposition</p>
-                  <p class="skill-entry__desc">Chaque projet démarre par une vraie immersion dans l'univers du client. J'apporte des idées originales tout en restant à l'écoute des besoins et contraintes de chacun.</p>
+                  <p data-edit="creative_a_l_ecoute_force" class="skill-entry__title">Créative, à l'écoute &amp; force de proposition</p>
+                  <p data-edit="chaque_projet_demarre_par_une" class="skill-entry__desc">Chaque projet démarre par une vraie immersion dans l'univers du client. J'apporte des idées originales tout en restant à l'écoute des besoins et contraintes de chacun.</p>
                 </div>
               </div>
               <div class="skill-entry">
                 <span class="skill-entry__icon">✦</span>
                 <div>
-                  <p class="skill-entry__title">Rigueur &amp; sens du détail</p>
-                  <p class="skill-entry__desc">Chaque pixel, chaque mot compte. Je soigne la cohérence visuelle et éditoriale de A à Z pour garantir un rendu professionnel impeccable.</p>
+                  <p data-edit="rigueur_sens_du_detail" class="skill-entry__title">Rigueur &amp; sens du détail</p>
+                  <p data-edit="chaque_pixel_chaque_mot_compte" class="skill-entry__desc">Chaque pixel, chaque mot compte. Je soigne la cohérence visuelle et éditoriale de A à Z pour garantir un rendu professionnel impeccable.</p>
                 </div>
               </div>
               <div class="skill-entry">
                 <span class="skill-entry__icon">✦</span>
                 <div>
-                  <p class="skill-entry__title">Adaptabilité &amp; esprit d'équipe</p>
-                  <p class="skill-entry__desc">À l'aise aussi bien en autonomie qu'en équipe, je m'adapte aux différents secteurs et environnements de travail pour apporter une valeur ajoutée dès les premières heures.</p>
+                  <p data-edit="adaptabilite_esprit_d_equipe" class="skill-entry__title">Adaptabilité &amp; esprit d'équipe</p>
+                  <p data-edit="a_l_aise_aussi_bien" class="skill-entry__desc">À l'aise aussi bien en autonomie qu'en équipe, je m'adapte aux différents secteurs et environnements de travail pour apporter une valeur ajoutée dès les premières heures.</p>
                 </div>
               </div>
             </div>
@@ -341,7 +341,7 @@
 
         <div class="footer-brand">
           <img src="assets/logos/logo-utopic-mini.png" alt="Utopi'C" class="footer-brand__logo" />
-          <p class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
+          <p data-edit="site_cree_avec_passion_communiquez_avec" class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
           <div class="footer-brand__socials">
             <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
             <a href="https://www.facebook.com/profile.php?id=61557195407284" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
@@ -350,20 +350,20 @@
         </div>
 
         <div class="footer-nav-block">
-          <p class="footer-nav-block__title">Navigation</p>
+          <p data-edit="site_navigation" class="footer-nav-block__title">Navigation</p>
           <ul class="footer-nav-block__cols">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a data-edit="site_accueil" href="index.html">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html">À propos</a></li>
+            <li><a data-edit="site_portfolio" href="portfolio.html">Portfolio</a></li>
             <!--<li><a href="tarifs.html">Tarifs</a></li>-->
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="identite-visuelle.html">Identité visuelle</a></li>
-            <li><a href="communication-print.html">Print</a></li>
-            <li><a href="communication-digitale.html">Digitale</a></li>
-            <li><a href="#">Blog / FAQ</a></li>
-            <li><a href="mentions-legales.html">Mentions légales</a></li>
-            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-            <li><a href="cgv.html">CGV</a></li>
+            <li><a data-edit="site_contact" href="contact.html">Contact</a></li>
+            <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html">Identité visuelle</a></li>
+            <li><a data-edit="site_print" href="communication-print.html">Print</a></li>
+            <li><a data-edit="site_digitale" href="communication-digitale.html">Digitale</a></li>
+            <li><a data-edit="site_blog_faq" href="#">Blog / FAQ</a></li>
+            <li><a data-edit="site_mentions_legales" href="mentions-legales.html">Mentions légales</a></li>
+            <li><a data-edit="site_politique_de_confidentialite" href="politique-confidentialite.html">Politique de confidentialité</a></li>
+            <li><a data-edit="site_cgv" href="cgv.html">CGV</a></li>
           </ul>
         </div>
 
@@ -371,12 +371,13 @@
     </div>
 
     <div class="footer-copyright">
-      <p>2026 &copy; UTOPI'C</p>
+      <p data-edit="site_2026_utopi_c">2026 &copy; UTOPI'C</p>
     </div>
 
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/edit-text.js"></script>
   <script src="js/textes-loader.js"></script>
 </body>
 </html>

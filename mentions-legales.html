@@ -11,6 +11,8 @@
   <link rel="apple-touch-icon" href="assets/logos/logo-utopic-mini.png" />
   <link rel="stylesheet" href="css/style.css?v=13" />
   <link rel="stylesheet" href="css/legal.css?v=13" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
 </head>
 <body>
 
@@ -29,24 +31,24 @@
         <a href="index.html" class="header-logo"><img src="assets/logos/logo-utopic.png" alt="Utopi'C" class="header-logo__img" /></a>
         <nav class="header-nav" id="navMenu" aria-label="Navigation principale">
           <ul class="header-nav__list">
-            <li><a href="index.html" class="header-nav__link">Accueil</a></li>
-            <li><a href="a-propos.html" class="header-nav__link">À propos</a></li>
+            <li><a data-edit="site_accueil" href="index.html" class="header-nav__link">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html" class="header-nav__link">À propos</a></li>
             <li class="header-nav__item--dropdown">
               <a href="portfolio.html" class="header-nav__link">
                 Portfolio
                 <svg class="header-nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               </a>
               <ul class="header-nav__dropdown">
-                <li><a href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
-                <li><a href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
-                <li><a href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
+                <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
+                <li><a data-edit="site_communication_print" href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
+                <li><a data-edit="site_communication_digitale" href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
               </ul>
             </li>
-            <li class="nav-mobile-only"><a href="contact.html" class="header-nav__link">Contact</a></li>
+            <li class="nav-mobile-only"><a data-edit="site_contact" href="contact.html" class="header-nav__link">Contact</a></li>
           </ul>
         </nav>
         <div class="header-right">
-          <a href="contact.html" class="btn-contact-bubble">Contact</a>
+          <a data-edit="site_contact" href="contact.html" class="btn-contact-bubble">Contact</a>
           <button class="header-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
       </div>
@@ -58,44 +60,44 @@
       <div class="legal-page__inner">
 
         <header class="legal-page__header">
-          <span class="section-label">Légal</span>
-          <h1 class="section-title">Mentions légales</h1>
+          <span data-edit="legal" class="section-label">Légal</span>
+          <h1 data-edit="mentions_legales" class="section-title">Mentions légales</h1>
         </header>
 
         <div class="legal-content">
 
-          <h2>Éditeur du site</h2>
+          <h2 data-edit="editeur_du_site">Éditeur du site</h2>
           <p>
-            <strong>Utopi'C</strong><br />
+            <strong data-edit="utopi_c">Utopi'C</strong><br />
             Auto-entreprise enregistrée sous le régime de la micro-entreprise<br />
             Propriétaire : Cléa LAUBIER<br />
             Adresse : France<br />
-            Email : <a href="mailto:contact@utopi-c.com">contact@utopi-c.com</a><br />
+            Email : <a data-edit="contact_email" data-edit-link="mailto" href="mailto:contact@utopi-c.com">contact@utopi-c.com</a><br />
             Téléphone : 06 98 54 69 47
           </p>
 
-          <h2>Hébergement</h2>
+          <h2 data-edit="hebergement">Hébergement</h2>
           <p>
-            Ce site est hébergé par <strong>GitHub Pages</strong><br />
+            Ce site est hébergé par <strong data-edit="github_pages">GitHub Pages</strong><br />
             GitHub, Inc. — 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis<br />
-            <a href="https://pages.github.com" target="_blank" rel="noopener">pages.github.com</a>
+            <a data-edit="pages_github_com" href="https://pages.github.com" target="_blank" rel="noopener">pages.github.com</a>
           </p>
 
-          <h2>Propriété intellectuelle</h2>
-          <p>
+          <h2 data-edit="propriete_intellectuelle">Propriété intellectuelle</h2>
+          <p data-edit="l_ensemble_des_contenus_presents">
             L'ensemble des contenus présents sur ce site (textes, images, logos, maquettes, créations graphiques) est la propriété exclusive de Cléa LAUBIER / Utopi'C, sauf mention contraire. Toute reproduction, distribution, modification ou utilisation sans autorisation préalable écrite est strictement interdite.
           </p>
 
-          <h2>Responsabilité</h2>
-          <p>
+          <h2 data-edit="responsabilite">Responsabilité</h2>
+          <p data-edit="l_editeur_s_efforce_de">
             L'éditeur s'efforce de maintenir les informations publiées à jour et exactes. Toutefois, il ne saurait être tenu responsable des erreurs ou omissions, ni des dommages directs ou indirects résultant de l'utilisation du site.
           </p>
-          <p>
+          <p data-edit="les_liens_hypertextes_vers_des">
             Les liens hypertextes vers des sites tiers sont fournis à titre indicatif. L'éditeur n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
           </p>
 
-          <h2>Droit applicable</h2>
-          <p>
+          <h2 data-edit="droit_applicable">Droit applicable</h2>
+          <p data-edit="le_present_site_et_ses">
             Le présent site et ses mentions légales sont soumis au droit français. Tout litige relatif à son utilisation relève de la compétence des tribunaux français.
           </p>
 
@@ -110,7 +112,7 @@
       <div class="footer-main__inner">
         <div class="footer-brand">
           <img src="assets/logos/logo-utopic-mini.png" alt="Utopi'C" class="footer-brand__logo" />
-          <p class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
+          <p data-edit="site_cree_avec_passion_communiquez_avec" class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
           <div class="footer-brand__socials">
             <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
             <a href="https://www.facebook.com/profile.php?id=61557195407284" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
@@ -118,27 +120,29 @@
           </div>
         </div>
         <div class="footer-nav-block">
-          <p class="footer-nav-block__title">Navigation</p>
+          <p data-edit="site_navigation" class="footer-nav-block__title">Navigation</p>
           <ul class="footer-nav-block__cols">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a data-edit="site_accueil" href="index.html">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html">À propos</a></li>
+            <li><a data-edit="site_portfolio" href="portfolio.html">Portfolio</a></li>
             <!--<li><a href="tarifs.html">Tarifs</a></li>-->
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="identite-visuelle.html">Identité visuelle</a></li>
-            <li><a href="communication-print.html">Print</a></li>
-            <li><a href="communication-digitale.html">Digitale</a></li>
-            <li><a href="#">Blog / FAQ</a></li>
-            <li><a href="mentions-legales.html">Mentions légales</a></li>
-            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-            <li><a href="cgv.html">CGV</a></li>
+            <li><a data-edit="site_contact" href="contact.html">Contact</a></li>
+            <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html">Identité visuelle</a></li>
+            <li><a data-edit="site_print" href="communication-print.html">Print</a></li>
+            <li><a data-edit="site_digitale" href="communication-digitale.html">Digitale</a></li>
+            <li><a data-edit="site_blog_faq" href="#">Blog / FAQ</a></li>
+            <li><a data-edit="site_mentions_legales" href="mentions-legales.html">Mentions légales</a></li>
+            <li><a data-edit="site_politique_de_confidentialite" href="politique-confidentialite.html">Politique de confidentialité</a></li>
+            <li><a data-edit="site_cgv" href="cgv.html">CGV</a></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="footer-copyright"><p>2026 &copy; UTOPI'C</p></div>
+    <div class="footer-copyright"><p data-edit="site_2026_utopi_c">2026 &copy; UTOPI'C</p></div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/edit-text.js"></script>
+  <script src="js/textes-loader.js"></script>
 </body>
 </html>

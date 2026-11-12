@@ -12,6 +12,8 @@
   <link rel="apple-touch-icon" href="assets/logos/logo-utopic-mini.png" />
   <link rel="stylesheet" href="css/style.css?v=15" />
   <link rel="stylesheet" href="css/tarifs.css?v=15" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
 </head>
 <body>
 
@@ -43,26 +45,26 @@
 
         <nav class="header-nav" id="navMenu" aria-label="Navigation principale">
           <ul class="header-nav__list">
-            <li><a href="index.html" class="header-nav__link">Accueil</a></li>
-            <li><a href="a-propos.html" class="header-nav__link">À propos</a></li>
+            <li><a data-edit="site_accueil" href="index.html" class="header-nav__link">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html" class="header-nav__link">À propos</a></li>
             <li class="header-nav__item--dropdown">
               <a href="portfolio.html" class="header-nav__link">
                 Portfolio
                 <svg class="header-nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               </a>
               <ul class="header-nav__dropdown">
-                <li><a href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
-                <li><a href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
-                <li><a href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
+                <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
+                <li><a data-edit="site_communication_print" href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
+                <li><a data-edit="site_communication_digitale" href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
               </ul>
             </li>
             <!--<li><a href="tarifs.html" class="header-nav__link">Tarifs</a></li>-->
-            <li class="nav-mobile-only"><a href="contact.html" class="header-nav__link">Contact</a></li>
+            <li class="nav-mobile-only"><a data-edit="site_contact" href="contact.html" class="header-nav__link">Contact</a></li>
           </ul>
         </nav>
 
         <div class="header-right">
-          <a href="contact.html" class="btn-contact-bubble">Contact</a>
+          <a data-edit="site_contact" href="contact.html" class="btn-contact-bubble">Contact</a>
           <button class="header-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -76,11 +78,11 @@
   <main>
     <div class="wrapper tarifs-wrapper">
 
-      <div class="page-title" style="text-align:center;margin:3rem 0 3rem"><span>Nos tarifs</span></div>
+      <div class="page-title" style="text-align:center;margin:3rem 0 3rem"><span data-edit="nos_tarifs">Nos tarifs</span></div>
 
       <!-- FORMULES -->
       <div class="section-label">
-        <h2>Formules mensuelles</h2>
+        <h2 data-edit="formules_mensuelles">Formules mensuelles</h2>
       </div>
 
       <div class="formules-grid">
@@ -88,39 +90,39 @@
         <!-- ESSENTIEL -->
         <div class="formule-card card-essentiel">
           <div class="card-header">
-            <span class="formula-name">Essentiel</span>
-            <span class="formula-sub">Formule de base</span>
+            <span data-edit="essentiel" class="formula-name">Essentiel</span>
+            <span data-edit="formule_de_base" class="formula-sub">Formule de base</span>
           </div>
           <div class="card-body">
             <div class="prestation-block">
               <div class="prestation-title">Réseaux sociaux</div>
               <div class="prestation-details">
-                <span class="network">Facebook + Instagram</span>
-                <p>1 post / semaine → 4 / mois<br>1 story / semaine → 4 / mois</p>
-                <p>Créations graphiques possibles<br>Planification et programmation</p>
+                <span data-edit="facebook_instagram" class="network">Facebook + Instagram</span>
+                <p data-edit="1_post_semaine_4_mois">1 post / semaine → 4 / mois<br>1 story / semaine → 4 / mois</p>
+                <p data-edit="creations_graphiques_possibles_planifica">Créations graphiques possibles<br>Planification et programmation</p>
               </div>
               <div class="price-block">
-                <span class="price">258 <sup>€</sup><span class="ttc">/mois TTC</span></span>
+                <span class="price">258 <sup>€</sup><span data-edit="mois_ttc" class="ttc">/mois TTC</span></span>
               </div>
             </div>
             <div class="prestation-block">
               <div class="prestation-title">Site web + SEO de base</div>
               <div class="prestation-details">
-                <span class="network">Maintenance</span>
-                <p>Mises à jour &amp; sécurité du site web</p>
-                <span class="network" style="margin-top:.5rem;display:block">SEO &amp; Google My Business</span>
-                <p>Balises, titres, mots-clés de base + mise à jour fiche Google My Business</p>
+                <span data-edit="maintenance" class="network">Maintenance</span>
+                <p data-edit="mises_a_jour_securite_du">Mises à jour &amp; sécurité du site web</p>
+                <span data-edit="seo_google_my_business" class="network" style="margin-top:.5rem;display:block">SEO &amp; Google My Business</span>
+                <p data-edit="balises_titres_mots_cles_de">Balises, titres, mots-clés de base + mise à jour fiche Google My Business</p>
               </div>
               <div class="price-block">
-                <span class="price">99 <sup>€</sup><span class="ttc">/mois TTC</span></span>
+                <span class="price">99 <sup>€</sup><span data-edit="mois_ttc" class="ttc">/mois TTC</span></span>
               </div>
             </div>
             <div class="prestation-block">
               <div class="prestation-title">Formule duo</div>
-              <div class="prestation-details"><p><em>Réseaux sociaux + site web</em></p></div>
+              <div class="prestation-details"><p><em data-edit="reseaux_sociaux_site_web">Réseaux sociaux + site web</em></p></div>
               <div class="price-block">
-                <span class="price-old">357 € /mois</span>
-                <span class="price">321 <sup>€</sup><span class="ttc">/mois TTC</span></span>
+                <span data-edit="357_mois" class="price-old">357 € /mois</span>
+                <span class="price">321 <sup>€</sup><span data-edit="mois_ttc" class="ttc">/mois TTC</span></span>
               </div>
             </div>
           </div>
@@ -129,39 +131,39 @@
         <!-- EXCELLENCE -->
         <div class="formule-card card-excellence">
           <div class="card-header">
-            <span class="formula-name">Excellence</span>
-            <span class="formula-sub">Formule avancée</span>
+            <span data-edit="excellence" class="formula-name">Excellence</span>
+            <span data-edit="formule_avancee" class="formula-sub">Formule avancée</span>
           </div>
           <div class="card-body">
             <div class="prestation-block">
               <div class="prestation-title">Réseaux sociaux</div>
               <div class="prestation-details">
-                <span class="network">Facebook + Instagram</span>
-                <p>2 posts / semaine → 8 / mois<br>2 stories / semaine → 8 / mois</p>
-                <p>Créations graphiques possibles<br>Planification et programmation</p>
+                <span data-edit="facebook_instagram" class="network">Facebook + Instagram</span>
+                <p data-edit="2_posts_semaine_8_mois">2 posts / semaine → 8 / mois<br>2 stories / semaine → 8 / mois</p>
+                <p data-edit="creations_graphiques_possibles_planifica">Créations graphiques possibles<br>Planification et programmation</p>
               </div>
               <div class="price-block">
-                <span class="price">354 <sup>€</sup><span class="ttc">/mois TTC</span></span>
+                <span class="price">354 <sup>€</sup><span data-edit="mois_ttc" class="ttc">/mois TTC</span></span>
               </div>
             </div>
             <div class="prestation-block">
               <div class="prestation-title">Site web + SEO stratégique</div>
               <div class="prestation-details">
-                <span class="network">Maintenance</span>
-                <p>Mises à jour &amp; sécurité du site web</p>
-                <span class="network" style="margin-top:.5rem;display:block">SEO Stratégique &amp; Google</span>
-                <p>Optimisation SEO avancée, stratégie de visibilité, page Google Business + 1 article / mois</p>
+                <span data-edit="maintenance" class="network">Maintenance</span>
+                <p data-edit="mises_a_jour_securite_du">Mises à jour &amp; sécurité du site web</p>
+                <span data-edit="seo_strategique_google" class="network" style="margin-top:.5rem;display:block">SEO Stratégique &amp; Google</span>
+                <p data-edit="optimisation_seo_avancee_strategie_de">Optimisation SEO avancée, stratégie de visibilité, page Google Business + 1 article / mois</p>
               </div>
               <div class="price-block">
-                <span class="price">179 <sup>€</sup><span class="ttc">/mois TTC</span></span>
+                <span class="price">179 <sup>€</sup><span data-edit="mois_ttc" class="ttc">/mois TTC</span></span>
               </div>
             </div>
             <div class="prestation-block">
               <div class="prestation-title">Formule double</div>
-              <div class="prestation-details"><p><em>Réseaux sociaux + site web</em></p></div>
+              <div class="prestation-details"><p><em data-edit="reseaux_sociaux_site_web">Réseaux sociaux + site web</em></p></div>
               <div class="price-block">
-                <span class="price-old">533 € /mois</span>
-                <span class="price">480 <sup>€</sup><span class="ttc">/mois TTC</span></span>
+                <span data-edit="533_mois" class="price-old">533 € /mois</span>
+                <span class="price">480 <sup>€</sup><span data-edit="mois_ttc" class="ttc">/mois TTC</span></span>
               </div>
             </div>
           </div>
@@ -170,8 +172,8 @@
         <!-- SIGNATURE -->
         <div class="formule-card card-signature">
           <div class="card-header">
-            <span class="formula-name">Signature</span>
-            <span class="formula-sub">Formule sur mesure</span>
+            <span data-edit="signature" class="formula-name">Signature</span>
+            <span data-edit="formule_sur_mesure" class="formula-sub">Formule sur mesure</span>
           </div>
           <div class="card-body">
             <div class="prestation-block" style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:1.5rem 1rem;">
@@ -186,61 +188,61 @@
 
       <!-- SEO TABLE -->
       <div class="section-label" style="animation-delay:.2s">
-        <h2>SEO inclus à la création de votre site</h2>
+        <h2 data-edit="seo_inclus_a_la_creation">SEO inclus à la création de votre site</h2>
       </div>
 
       <div class="seo-table-wrap">
         <table class="seo">
           <thead>
             <tr>
-              <th style="width:110px">Référence</th>
-              <th>Description</th>
-              <th style="width:120px">Type</th>
-              <th style="width:110px; text-align:right">Tarif TTC</th>
+              <th data-edit="reference" style="width:110px">Référence</th>
+              <th data-edit="description">Description</th>
+              <th data-edit="type" style="width:120px">Type</th>
+              <th data-edit="tarif_ttc" style="width:110px; text-align:right">Tarif TTC</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="seo-ref">SEO optimisé</span></td>
+              <td><span data-edit="seo_optimise" class="seo-ref">SEO optimisé</span></td>
               <td><div class="seo-desc-title">SEO optimisé — Site de 1 à 3 pages</div><div class="seo-desc-body">Optimisation SEO de base : balises, titres, mots-clés, optimisation des images et structure des pages afin d'améliorer la visibilité du site sur Google.</div></td>
-              <td><span class="badge badge-mensuel">Forfait</span></td>
-              <td class="seo-price">150,00 €</td>
+              <td><span data-edit="forfait" class="badge badge-mensuel">Forfait</span></td>
+              <td data-edit="150_00" class="seo-price">150,00 €</td>
             </tr>
             <tr>
-              <td><span class="seo-ref">SEO optimisé complet</span></td>
+              <td><span data-edit="seo_optimise_complet" class="seo-ref">SEO optimisé complet</span></td>
               <td><div class="seo-desc-title">SEO optimisé complet — Site de 1 à 3 pages</div><div class="seo-desc-body">Optimisation SEO approfondie avec ajout et optimisation d'une FAQ ou d'un blog afin de renforcer le référencement naturel et la visibilité Google.</div></td>
-              <td><span class="badge badge-mensuel">Forfait</span></td>
-              <td class="seo-price">250,00 €</td>
+              <td><span data-edit="forfait" class="badge badge-mensuel">Forfait</span></td>
+              <td data-edit="250_00" class="seo-price">250,00 €</td>
             </tr>
             <tr>
-              <td><span class="seo-ref">SEO optimisé</span></td>
+              <td><span data-edit="seo_optimise" class="seo-ref">SEO optimisé</span></td>
               <td><div class="seo-desc-title">SEO optimisé — Site de 3 à 7 pages</div><div class="seo-desc-body">Optimisation SEO complète des pages du site : structure, contenus, balises, mots-clés et optimisation des performances SEO.</div></td>
-              <td><span class="badge badge-mensuel">Forfait</span></td>
-              <td class="seo-price">250,00 €</td>
+              <td><span data-edit="forfait" class="badge badge-mensuel">Forfait</span></td>
+              <td data-edit="250_00" class="seo-price">250,00 €</td>
             </tr>
             <tr>
-              <td><span class="seo-ref">SEO optimisé complet</span></td>
+              <td><span data-edit="seo_optimise_complet" class="seo-ref">SEO optimisé complet</span></td>
               <td><div class="seo-desc-title">SEO optimisé complet — Site de 3 à 7 pages</div><div class="seo-desc-body">Optimisation SEO avancée avec stratégie de contenu incluant une FAQ ou un blog optimisé pour le référencement naturel.</div></td>
-              <td><span class="badge badge-mensuel">Forfait</span></td>
-              <td class="seo-price">350,00 €</td>
+              <td><span data-edit="forfait" class="badge badge-mensuel">Forfait</span></td>
+              <td data-edit="350_00" class="seo-price">350,00 €</td>
             </tr>
             <tr>
-              <td><span class="seo-ref">SEO optimisé</span></td>
+              <td><span data-edit="seo_optimise" class="seo-ref">SEO optimisé</span></td>
               <td><div class="seo-desc-title">SEO optimisé — Site de plus de 7 pages</div><div class="seo-desc-body">Optimisation SEO globale avec travail approfondi sur l'arborescence, les contenus et le référencement des différentes pages du site.</div></td>
-              <td><span class="badge badge-mensuel">Forfait</span></td>
-              <td class="seo-price">400,00 €</td>
+              <td><span data-edit="forfait" class="badge badge-mensuel">Forfait</span></td>
+              <td data-edit="400_00" class="seo-price">400,00 €</td>
             </tr>
             <tr>
-              <td><span class="seo-ref">SEO optimisé complet</span></td>
+              <td><span data-edit="seo_optimise_complet" class="seo-ref">SEO optimisé complet</span></td>
               <td><div class="seo-desc-title">SEO optimisé complet — Site de plus de 7 pages</div><div class="seo-desc-body">Optimisation SEO avancée avec mise en place d'une stratégie de contenu via FAQ ou blog pour améliorer durablement la visibilité Google.</div></td>
-              <td><span class="badge badge-mensuel">Forfait</span></td>
-              <td class="seo-price">550,00 €</td>
+              <td><span data-edit="forfait" class="badge badge-mensuel">Forfait</span></td>
+              <td data-edit="550_00" class="seo-price">550,00 €</td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <p style="text-align:center;margin-top:3rem;font-size:.8rem;color:#aaa;letter-spacing:.1em;text-transform:uppercase;">
+      <p data-edit="utopi_c_tous_tarifs_indiques" style="text-align:center;margin-top:3rem;font-size:.8rem;color:#aaa;letter-spacing:.1em;text-transform:uppercase;">
         © Utopi'C — Tous tarifs indiqués TTC · Sous réserve de modifications
       </p>
 
@@ -255,7 +257,7 @@
 
         <div class="footer-brand">
           <img src="assets/logos/logo-utopic-mini.png" alt="Utopi'C" class="footer-brand__logo" />
-          <p class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
+          <p data-edit="site_cree_avec_passion_communiquez_avec" class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
           <div class="footer-brand__socials">
             <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
             <a href="https://www.facebook.com/profile.php?id=61557195407284" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
@@ -264,20 +266,20 @@
         </div>
 
         <div class="footer-nav-block">
-          <p class="footer-nav-block__title">Navigation</p>
+          <p data-edit="site_navigation" class="footer-nav-block__title">Navigation</p>
           <ul class="footer-nav-block__cols">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="tarifs.html">Tarifs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="identite-visuelle.html">Identité visuelle</a></li>
-            <li><a href="communication-print.html">Print</a></li>
-            <li><a href="communication-digitale.html">Digitale</a></li>
-            <li><a href="#">Blog / FAQ</a></li>
-            <li><a href="mentions-legales.html">Mentions légales</a></li>
-            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-            <li><a href="cgv.html">CGV</a></li>
+            <li><a data-edit="site_accueil" href="index.html">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html">À propos</a></li>
+            <li><a data-edit="site_portfolio" href="portfolio.html">Portfolio</a></li>
+            <li><a data-edit="site_tarifs" href="tarifs.html">Tarifs</a></li>
+            <li><a data-edit="site_contact" href="contact.html">Contact</a></li>
+            <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html">Identité visuelle</a></li>
+            <li><a data-edit="site_print" href="communication-print.html">Print</a></li>
+            <li><a data-edit="site_digitale" href="communication-digitale.html">Digitale</a></li>
+            <li><a data-edit="site_blog_faq" href="#">Blog / FAQ</a></li>
+            <li><a data-edit="site_mentions_legales" href="mentions-legales.html">Mentions légales</a></li>
+            <li><a data-edit="site_politique_de_confidentialite" href="politique-confidentialite.html">Politique de confidentialité</a></li>
+            <li><a data-edit="site_cgv" href="cgv.html">CGV</a></li>
           </ul>
         </div>
 
@@ -285,11 +287,13 @@
     </div>
 
     <div class="footer-copyright">
-      <p>2026 &copy; UTOPI'C</p>
+      <p data-edit="site_2026_utopi_c">2026 &copy; UTOPI'C</p>
     </div>
 
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/edit-text.js"></script>
+  <script src="js/textes-loader.js"></script>
 </body>
 </html>

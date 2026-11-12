@@ -52,8 +52,8 @@
 
         <nav class="header-nav" id="navMenu" aria-label="Navigation principale">
           <ul class="header-nav__list">
-            <li><a href="index.html" class="header-nav__link header-nav__link--active">Accueil</a></li>
-            <li><a href="a-propos.html" class="header-nav__link">À propos</a></li>
+            <li><a data-edit="site_accueil" href="index.html" class="header-nav__link header-nav__link--active">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html" class="header-nav__link">À propos</a></li>
             <li class="header-nav__item--dropdown">
               <a href="portfolio.html" class="header-nav__link">
                 Portfolio
@@ -62,17 +62,17 @@
                 </svg>
               </a>
               <ul class="header-nav__dropdown">
-                <li><a href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
-                <li><a href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
-                <li><a href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
+                <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
+                <li><a data-edit="site_communication_print" href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
+                <li><a data-edit="site_communication_digitale" href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
               </ul>
             </li>
-            <li class="nav-mobile-only"><a href="contact.html" class="header-nav__link">Contact</a></li>
+            <li class="nav-mobile-only"><a data-edit="site_contact" href="contact.html" class="header-nav__link">Contact</a></li>
           </ul>
         </nav>
 
         <div class="header-right">
-          <a href="contact.html" class="btn-contact-bubble">Contact</a>
+          <a data-edit="site_contact" href="contact.html" class="btn-contact-bubble">Contact</a>
           <button class="header-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -88,11 +88,11 @@
     <!-- ======= HERO ======= -->
     <section class="hero">
       <div class="hero__inner">
-        <h1 class="hero__tagline">
+        <h1 data-edit="hero_tagline" class="hero__tagline">
           Crée avec passion,<br />Communiquez avec émotion.
         </h1>
-        <p class="hero__subtitle">Ton projet, ma créativité, un résultat sur-mesure</p>
-        <a href="contact.html" class="hero__cta">Un projet&nbsp;? Parlons-en&nbsp;!</a>
+        <p data-edit="hero_subtitle" class="hero__subtitle">Ton projet, ma créativité, un résultat sur-mesure</p>
+        <a data-edit="hero_cta" href="contact.html" class="hero__cta">Un projet&nbsp;? Parlons-en&nbsp;!</a>
       </div>
     </section>
 
@@ -103,9 +103,9 @@
       <div class="realisations__inner">
 
         <header class="section-header">
-          <span class="section-label">Réalisations</span>
-          <h2 class="section-title">De l'idée au projet</h2>
-          <p class="section-sub"><em>Chaque projet, une nouvelle aventure</em></p>
+          <span data-edit="realisations" class="section-label">Réalisations</span>
+          <h2 data-edit="realisations_titre" class="section-title">De l'idée au projet</h2>
+          <p class="section-sub"><em data-edit="realisations_sous_titre">Chaque projet, une nouvelle aventure</em></p>
         </header>
 
         <div class="carousel" id="carouselReal" role="region" aria-label="Carrousel de réalisations">
@@ -145,8 +145,8 @@
       <div class="prestations__inner">
 
         <div class="prestations__header">
-          <span class="section-label">Prestations</span>
-          <h2 class="prestations__title">Imaginer, concevoir<br />Rayonner.</h2>
+          <span data-edit="prestations" class="section-label">Prestations</span>
+          <h2 data-edit="prestations_titre" class="prestations__title">Imaginer, concevoir<br />Rayonner.</h2>
         </div>
 
         <div class="prestations__stagger">
@@ -154,27 +154,27 @@
             <div class="presta-item__img-wrap">
               <img src="assets/images/presta-identite.jpg" alt="Identité visuelle" loading="lazy" />
             </div>
-            <span class="presta-item__label">Identité visuelle</span>
+            <span data-edit="identite_visuelle" class="presta-item__label">Identité visuelle</span>
           </a>
 
           <a href="communication-print.html" class="presta-item presta-item--print">
             <div class="presta-item__img-wrap">
               <img src="assets/images/presta-print.jpg" alt="Communication print" loading="lazy" />
             </div>
-            <span class="presta-item__label">Communication print</span>
+            <span data-edit="communication_print" class="presta-item__label">Communication print</span>
           </a>
 
           <a href="communication-digitale.html" class="presta-item presta-item--digital">
             <div class="presta-item__img-wrap">
               <img src="assets/images/presta-digitale.jpeg" alt="Communication digitale" loading="lazy" />
             </div>
-            <span class="presta-item__label">Communication digitale</span>
+            <span data-edit="communication_digitale" class="presta-item__label">Communication digitale</span>
           </a>
         </div>
 
         <div class="prestations__cta">
-          <p>Pour voir plus de projets, c'est juste ici&nbsp;!</p>
-          <a href="portfolio.html" class="btn btn--gold-outline">Portfolio</a>
+          <p data-edit="pour_voir_plus_de_projets">Pour voir plus de projets, c'est juste ici&nbsp;!</p>
+          <a data-edit="portfolio" href="portfolio.html" class="btn btn--gold-outline">Portfolio</a>
         </div>
 
       </div>
@@ -184,8 +184,8 @@
     <div class="experiences-intro">
       <div class="experiences-intro__inner">
         <header class="section-header">
-          <span class="section-label">Expériences</span>
-          <h2 class="section-title">Ils racontent mon univers&nbsp;!</h2>
+          <span data-edit="experiences" class="section-label">Expériences</span>
+          <h2 data-edit="experiences_titre" class="section-title">Ils racontent mon univers&nbsp;!</h2>
         </header>
       </div>
     </div>
@@ -385,7 +385,7 @@
 
         <div class="footer-brand">
           <img src="assets/logos/logo-utopic-mini.png" alt="Utopi'C" class="footer-brand__logo" />
-          <p class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
+          <p data-edit="site_cree_avec_passion_communiquez_avec" class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
           <div class="footer-brand__socials">
             <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -406,20 +406,20 @@
         </div>
 
         <div class="footer-nav-block">
-          <p class="footer-nav-block__title">Navigation</p>
+          <p data-edit="site_navigation" class="footer-nav-block__title">Navigation</p>
           <ul class="footer-nav-block__cols">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a data-edit="site_accueil" href="index.html">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html">À propos</a></li>
+            <li><a data-edit="site_portfolio" href="portfolio.html">Portfolio</a></li>
             <!--<li><a href="tarifs.html">Tarifs</a></li>-->
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="identite-visuelle.html">Identité visuelle</a></li>
-            <li><a href="communication-print.html">Print</a></li>
-            <li><a href="communication-digitale.html">Digitale</a></li>
-            <li><a href="#">Blog / FAQ</a></li>
-            <li><a href="mentions-legales.html">Mentions légales</a></li>
-            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-            <li><a href="cgv.html">CGV</a></li>
+            <li><a data-edit="site_contact" href="contact.html">Contact</a></li>
+            <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html">Identité visuelle</a></li>
+            <li><a data-edit="site_print" href="communication-print.html">Print</a></li>
+            <li><a data-edit="site_digitale" href="communication-digitale.html">Digitale</a></li>
+            <li><a data-edit="site_blog_faq" href="#">Blog / FAQ</a></li>
+            <li><a data-edit="site_mentions_legales" href="mentions-legales.html">Mentions légales</a></li>
+            <li><a data-edit="site_politique_de_confidentialite" href="politique-confidentialite.html">Politique de confidentialité</a></li>
+            <li><a data-edit="site_cgv" href="cgv.html">CGV</a></li>
           </ul>
         </div>
 
@@ -427,7 +427,7 @@
     </div>
 
     <div class="footer-copyright">
-      <p>2026 &copy; UTOPI'C</p>
+      <p data-edit="site_2026_utopi_c">2026 &copy; UTOPI'C</p>
     </div>
 
   </footer>
@@ -438,6 +438,7 @@
 
   <script src="js/main.js"></script>
   <script src="js/index-loader.js"></script>
+  <script src="js/edit-text.js"></script>
   <script src="js/textes-loader.js"></script>
 </body>
 </html>

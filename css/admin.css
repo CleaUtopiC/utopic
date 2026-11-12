@@ -204,3 +204,16 @@ input[type="number"] { max-width: 9rem; }
 @media (prefers-reduced-motion: reduce) {
   .adm-toast, .adm-btn { transition: none; }
 }
+
+/* ---------- Textes du site ---------- */
+.adm-textes__bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem; position: sticky; top: 0; background: var(--cream); padding: 0.6rem 0; z-index: 2; }
+.adm-textes__bar select { width: auto; min-width: 14rem; }
+.adm-textes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+.adm-text { background: var(--white); border-radius: var(--radius); padding: 0.8rem 1rem; border: 2px solid transparent; }
+.adm-text.is-dirty { border-color: var(--gold); }
+.adm-text.is-invalid { border-color: var(--danger); }
+.adm-text__head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
+.adm-text__head label { font-weight: 600; font-size: 0.85rem; }
+.adm-text__tag { font-size: 0.8rem; color: var(--gold-dark); font-weight: 600; }
+.adm-text textarea { width: 100%; resize: vertical; }
+.adm-text__note { color: var(--danger); font-size: 0.85rem; margin: 0.3rem 0 0; min-height: 1.2em; }

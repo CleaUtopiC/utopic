@@ -51,8 +51,8 @@
 
         <nav class="header-nav" id="navMenu" aria-label="Navigation principale">
           <ul class="header-nav__list">
-            <li><a href="index.html" class="header-nav__link">Accueil</a></li>
-            <li><a href="a-propos.html" class="header-nav__link">À propos</a></li>
+            <li><a data-edit="site_accueil" href="index.html" class="header-nav__link">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html" class="header-nav__link">À propos</a></li>
             <li class="header-nav__item--dropdown">
               <a href="portfolio.html" class="header-nav__link">
                 Portfolio
@@ -61,17 +61,17 @@
                 </svg>
               </a>
               <ul class="header-nav__dropdown">
-                <li><a href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
-                <li><a href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
-                <li><a href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
+                <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
+                <li><a data-edit="site_communication_print" href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
+                <li><a data-edit="site_communication_digitale" href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
               </ul>
             </li>
-            <li class="nav-mobile-only"><a href="contact.html" class="header-nav__link header-nav__link--active">Contact</a></li>
+            <li class="nav-mobile-only"><a data-edit="site_contact" href="contact.html" class="header-nav__link header-nav__link--active">Contact</a></li>
           </ul>
         </nav>
 
         <div class="header-right">
-          <a href="contact.html" class="btn-contact-bubble">Contact</a>
+          <a data-edit="site_contact" href="contact.html" class="btn-contact-bubble">Contact</a>
           <button class="header-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -87,8 +87,8 @@
       <div class="contact-page__inner">
 
         <header class="contact-page__header">
-          <span class="section-label">Contact</span>
-          <h1 class="section-title">Parlons de votre projet</h1>
+          <span data-edit="contact" class="section-label">Contact</span>
+          <h1 data-edit="contact_titre" class="section-title">Parlons de votre projet</h1>
         </header>
 
         <div class="contact-layout">
@@ -97,17 +97,17 @@
           <div class="contact-info">
 
             <div class="contact-info__block">
-              <span class="contact-info__label">Téléphone</span>
-              <a href="tel:+33698546947" class="contact-info__value">06 98 54 69 47</a>
+              <span data-edit="telephone" class="contact-info__label">Téléphone</span>
+              <a data-edit="contact_telephone" data-edit-link="tel" href="tel:+33698546947" class="contact-info__value">06 98 54 69 47</a>
             </div>
 
             <div class="contact-info__block">
-              <span class="contact-info__label">Email</span>
-              <a href="mailto:contact@utopi-c.com" class="contact-info__value">contact@utopi-c.com</a>
+              <span data-edit="email" class="contact-info__label">Email</span>
+              <a data-edit="contact_email" data-edit-link="mailto" href="mailto:contact@utopi-c.com" class="contact-info__value">contact@utopi-c.com</a>
             </div>
 
             <div class="contact-info__block">
-              <span class="contact-info__label">Social</span>
+              <span data-edit="social" class="contact-info__label">Social</span>
               <div class="contact-info__socials">
                 <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener" aria-label="Instagram">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
@@ -143,11 +143,11 @@
               <!-- Ligne 1 : Prénom + Nom -->
               <div class="form-row">
                 <div class="form-group">
-                  <label for="prenom" class="form-label">Prénom</label>
+                  <label data-edit="prenom" for="prenom" class="form-label">Prénom</label>
                   <input type="text" id="prenom" name="prenom" class="form-input" placeholder="Votre prénom" required />
                 </div>
                 <div class="form-group">
-                  <label for="nom" class="form-label">Nom</label>
+                  <label data-edit="nom" for="nom" class="form-label">Nom</label>
                   <input type="text" id="nom" name="nom" class="form-input" placeholder="Votre nom" required />
                 </div>
               </div>
@@ -155,24 +155,24 @@
               <!-- Ligne 2 : Téléphone + Email -->
               <div class="form-row">
                 <div class="form-group">
-                  <label for="telephone" class="form-label">Téléphone</label>
+                  <label data-edit="telephone" for="telephone" class="form-label">Téléphone</label>
                   <input type="tel" id="telephone" name="telephone" class="form-input" placeholder="06 00 00 00 00" />
                 </div>
                 <div class="form-group">
-                  <label for="email" class="form-label">Email</label>
+                  <label data-edit="email" for="email" class="form-label">Email</label>
                   <input type="email" id="email" name="email" class="form-input" placeholder="votre@email.com" required />
                 </div>
               </div>
 
               <!-- Nom de l'entreprise -->
               <div class="form-group">
-                <label for="entreprise" class="form-label">Nom de l'entreprise</label>
+                <label data-edit="nom_de_l_entreprise" for="entreprise" class="form-label">Nom de l'entreprise</label>
                 <input type="text" id="entreprise" name="entreprise" class="form-input" placeholder="Votre entreprise (optionnel)" />
               </div>
 
               <!-- Pays -->
               <div class="form-group">
-                <label for="pays" class="form-label">Pays</label>
+                <label data-edit="pays" for="pays" class="form-label">Pays</label>
                 <select id="pays" name="pays" class="form-input form-select">
                   <option value="">Sélectionnez votre pays</option>
                   <option value="FR" selected>France</option>
@@ -186,7 +186,7 @@
 
               <!-- Message -->
               <div class="form-group">
-                <label for="message" class="form-label">Message</label>
+                <label data-edit="message" for="message" class="form-label">Message</label>
                 <textarea
                   id="message"
                   name="message"
@@ -197,9 +197,9 @@
                 ></textarea>
               </div>
 
-              <button type="submit" class="btn btn--gold-filled btn--full">Envoyer le message</button>
+              <button data-edit="envoyer_le_message" type="submit" class="btn btn--gold-filled btn--full">Envoyer le message</button>
 
-              <p class="form-success" id="formSuccess" hidden>
+              <p data-edit="merci_votre_message_a_bien" class="form-success" id="formSuccess" hidden>
                 Merci&nbsp;! Votre message a bien été envoyé. Je vous réponds rapidement.
               </p>
             </form>
@@ -218,7 +218,7 @@
 
         <div class="footer-brand">
           <img src="assets/logos/logo-utopic-mini.png" alt="Utopi'C" class="footer-brand__logo" />
-          <p class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
+          <p data-edit="site_cree_avec_passion_communiquez_avec" class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
           <div class="footer-brand__socials">
             <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -239,20 +239,20 @@
         </div>
 
         <div class="footer-nav-block">
-          <p class="footer-nav-block__title">Navigation</p>
+          <p data-edit="site_navigation" class="footer-nav-block__title">Navigation</p>
           <ul class="footer-nav-block__cols">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a data-edit="site_accueil" href="index.html">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html">À propos</a></li>
+            <li><a data-edit="site_portfolio" href="portfolio.html">Portfolio</a></li>
             <!--<li><a href="tarifs.html">Tarifs</a></li>-->
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="identite-visuelle.html">Identité visuelle</a></li>
-            <li><a href="communication-print.html">Print</a></li>
-            <li><a href="communication-digitale.html">Digitale</a></li>
-            <li><a href="#">Blog / FAQ</a></li>
-            <li><a href="mentions-legales.html">Mentions légales</a></li>
-            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-            <li><a href="cgv.html">CGV</a></li>
+            <li><a data-edit="site_contact" href="contact.html">Contact</a></li>
+            <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html">Identité visuelle</a></li>
+            <li><a data-edit="site_print" href="communication-print.html">Print</a></li>
+            <li><a data-edit="site_digitale" href="communication-digitale.html">Digitale</a></li>
+            <li><a data-edit="site_blog_faq" href="#">Blog / FAQ</a></li>
+            <li><a data-edit="site_mentions_legales" href="mentions-legales.html">Mentions légales</a></li>
+            <li><a data-edit="site_politique_de_confidentialite" href="politique-confidentialite.html">Politique de confidentialité</a></li>
+            <li><a data-edit="site_cgv" href="cgv.html">CGV</a></li>
           </ul>
         </div>
 
@@ -260,13 +260,14 @@
     </div>
 
     <div class="footer-copyright">
-      <p>2026 &copy; UTOPI'C</p>
+      <p data-edit="site_2026_utopi_c">2026 &copy; UTOPI'C</p>
     </div>
 
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/contact.js"></script>
+  <script src="js/edit-text.js"></script>
   <script src="js/textes-loader.js"></script>
 </body>
 </html>

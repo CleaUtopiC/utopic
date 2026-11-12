@@ -87,6 +87,9 @@
     state.projets = [];
     $('avisList').replaceChildren();
     $('projetsGroups').replaceChildren();
+    $('textesList').replaceChildren();
+    textes.fields = [];
+    textes.loaded = false;
     $('userEmail').textContent = '';
   }
 
@@ -226,6 +229,7 @@
       $(t.getAttribute('aria-controls')).hidden = !on;
     }
     tab.focus();
+    if (tab.id === 'tab-textes') openTextes();
   }
   tabs.forEach((tab, i) => {
     tab.addEventListener('click', () => selectTab(tab));
@@ -554,6 +558,162 @@
   for (const b of document.querySelectorAll('[data-clear-image]')) {
     b.addEventListener('click', () => setImage(b.closest('[data-upload]').dataset.upload, null));
   }
+
+  // ---------- Textes du site ----------
+
+  const TEXTE_PAGES = [
+    { id: 'index', label: 'Accueil', file: 'index.html' },
+    { id: 'a-propos', label: 'À propos', file: 'a-propos.html' },
+    { id: 'portfolio', label: 'Portfolio', file: 'portfolio.html' },
+    { id: 'identite-visuelle', label: 'Identité visuelle', file: 'identite-visuelle.html' },
+    { id: 'communication-print', label: 'Communication print', file: 'communication-print.html' },
+    { id: 'communication-digitale', label: 'Communication digitale', file: 'communication-digitale.html' },
+    { id: 'contact', label: 'Contact', file: 'contact.html' },
+    { id: 'tarifs', label: 'Tarifs', file: 'tarifs.html' },
+    { id: 'cgv', label: 'CGV', file: 'cgv.html' },
+    { id: 'mentions-legales', label: 'Mentions légales', file: 'mentions-legales.html' },
+    { id: 'politique-confidentialite', label: 'Politique de confidentialité', file: 'politique-confidentialite.html' },
+    { id: 'site', label: 'Menu et pied de page (toutes les pages)', file: 'index.html' }
+  ];
+  const TAG_LABELS = { H1: 'Titre principal', H2: 'Titre', H3: 'Sous-titre', H4: 'Sous-titre', P: 'Paragraphe', A: 'Lien', BUTTON: 'Bouton', LABEL: 'Intitulé de champ', LI: 'Élément de liste' };
+  const MAX_TEXTE = 5000;
+
+  const textes = { page: null, fields: [], loaded: false, busy: false };
+
+  function textesDirty() {
+    return textes.fields.filter((f) => f.value !== f.initial);
+  }
+
+  function updateTextesBar() {
+    const n = textesDirty().length;
+    const invalid = textes.fields.some((f) => f.error);
+    $('textesSave').disabled = textes.busy || !n || invalid;
+    $('textesCount').textContent = n ? `${n} modification${n > 1 ? 's' : ''} non enregistrée${n > 1 ? 's' : ''}` : '';
+  }
+
+  function checkTexte(f) {
+    if (!f.value) return 'Le texte ne peut pas être vide.';
+    if (f.value.length > MAX_TEXTE) return `Texte trop long (${MAX_TEXTE} caractères maximum).`;
+    if (!UtopicText.valid(f.kind, f.value)) return f.kind === 'tel' ? 'Numéro de téléphone invalide.' : 'Adresse e-mail invalide.';
+    return '';
+  }
+
+  function renderTexte(f, i) {
+    const id = `texte-${i}`;
+    const label = f.kind === 'tel' ? 'Téléphone' : f.kind === 'mailto' ? 'E-mail' : (TAG_LABELS[f.tag] || 'Texte');
+    const area = el('textarea', { id, rows: String(Math.min(12, Math.max(1, f.value.split('\n').length, Math.ceil(f.value.length / 70)))), maxlength: String(MAX_TEXTE + 100) });
+    area.value = f.value;
+    const note = el('p', { class: 'adm-text__note', role: 'alert' });
+    const tag = el('span', { class: 'adm-text__tag' });
+    const reset = el('button', { type: 'button', class: 'adm-btn adm-btn--link', text: "Rétablir le texte d'origine" });
+    const item = el('li', { class: 'adm-text' },
+      el('div', { class: 'adm-text__head' }, el('label', { for: id, text: `${i + 1}. ${label}` }), tag, reset),
+      area, note);
+
+    function sync() {
+      f.value = area.value.replace(/\r\n/g, '\n').trim();
+      f.error = checkTexte(f);
+      note.textContent = f.error;
+      item.classList.toggle('is-dirty', f.value !== f.initial);
+      item.classList.toggle('is-invalid', !!f.error);
+      tag.textContent = f.value !== f.def ? 'Modifié' : '';
+      reset.hidden = f.value === f.def;
+      updateTextesBar();
+    }
+    area.addEventListener('input', sync);
+    reset.addEventListener('click', () => { area.value = f.def; sync(); area.focus(); });
+    sync();
+    item.classList.toggle('is-dirty', f.value !== f.initial);
+    return item;
+  }
+
+  async function loadTextesPage(pageId) {
+    const cfg = TEXTE_PAGES.find((p) => p.id === pageId);
+    $('textesError').textContent = '';
+    $('textesList').replaceChildren(el('li', { class: 'adm-loading', text: 'Chargement…' }));
+    textes.fields = [];
+    textes.page = pageId;
+    updateTextesBar();
+
+    try {
+      const [res, saved] = await Promise.all([
+        fetch(cfg.file, { cache: 'no-cache' }),
+        db.from('textes_editables').select('cle, valeur').eq('page', pageId)
+      ]);
+      if (!res.ok) throw new Error('Page introuvable : ' + cfg.file);
+      if (saved.error) throw saved.error;
+      if (textes.page !== pageId) return;
+
+      const overrides = new Map(saved.data.map((r) => [r.cle, r.valeur]));
+      const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+      const seen = new Set();
+      for (const node of doc.querySelectorAll('[data-edit]')) {
+        const cle = node.dataset.edit;
+        if ((pageId === 'site') !== cle.startsWith('site_') || seen.has(cle)) continue;
+        seen.add(cle);
+        const def = UtopicText.read(node);
+        const value = (overrides.get(cle) ?? def).trim();
+        textes.fields.push({ cle, def, value, initial: value, tag: node.tagName, kind: node.dataset.editLink || '', error: '' });
+      }
+      $('textesList').replaceChildren(...textes.fields.map(renderTexte));
+      if (!textes.fields.length) $('textesList').replaceChildren(el('li', { class: 'adm-empty', text: 'Aucun texte modifiable sur cette page.' }));
+      updateTextesBar();
+    } catch (err) {
+      $('textesList').replaceChildren();
+      $('textesError').textContent = friendlyError(err);
+    }
+  }
+
+  async function openTextes() {
+    if (textes.loaded) return;
+    textes.loaded = true;
+    $('textesPage').replaceChildren(...TEXTE_PAGES.map((p) => el('option', { value: p.id, text: p.label })));
+    await loadTextesPage(TEXTE_PAGES[0].id);
+  }
+
+  $('textesPage').addEventListener('change', async (e) => {
+    if (textesDirty().length && !window.confirm('Des modifications ne sont pas enregistrées. Changer de page et les perdre ?')) {
+      e.target.value = textes.page;
+      return;
+    }
+    await loadTextesPage(e.target.value);
+  });
+
+  $('textesSave').addEventListener('click', async () => {
+    const dirty = textesDirty();
+    if (!dirty.length || dirty.some((f) => f.error)) return;
+    const page = textes.page;
+    textes.busy = true;
+    updateTextesBar();
+    $('textesError').textContent = '';
+
+    const toSave = dirty.filter((f) => f.value !== f.def);
+    const toRevert = dirty.filter((f) => f.value === f.def);
+    let failed = false;
+
+    if (toSave.length) {
+      const { data, error } = await db.from('textes_editables')
+        .upsert(toSave.map((f) => ({ page, cle: f.cle, valeur: f.value })), { onConflict: 'page,cle' })
+        .select('cle');
+      if (error || data?.length !== toSave.length) { failed = true; $('textesError').textContent = friendlyError(error || { code: '42501' }); }
+      else for (const f of toSave) f.initial = f.value;
+    }
+    if (!failed && toRevert.length) {
+      const { error } = await db.from('textes_editables').delete().eq('page', page).in('cle', toRevert.map((f) => f.cle));
+      if (error) { failed = true; $('textesError').textContent = friendlyError(error); }
+      else for (const f of toRevert) f.initial = f.value;
+    }
+
+    textes.busy = false;
+    for (const li of $('textesList').children) li.classList.toggle('is-dirty', false);
+    textes.fields.forEach((f, i) => { if (f.value !== f.initial) $('textesList').children[i]?.classList.add('is-dirty'); });
+    updateTextesBar();
+    if (!failed) toast('Textes enregistrés. Ils apparaissent sur le site dans quelques secondes.');
+  });
+
+  window.addEventListener('beforeunload', (e) => {
+    if (textesDirty().length) { e.preventDefault(); e.returnValue = ''; }
+  });
 
   // ---------- Démarrage ----------
 

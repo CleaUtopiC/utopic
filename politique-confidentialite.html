@@ -11,6 +11,8 @@
   <link rel="apple-touch-icon" href="assets/logos/logo-utopic-mini.png" />
   <link rel="stylesheet" href="css/style.css?v=13" />
   <link rel="stylesheet" href="css/legal.css?v=13" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
 </head>
 <body>
 
@@ -29,24 +31,24 @@
         <a href="index.html" class="header-logo"><img src="assets/logos/logo-utopic.png" alt="Utopi'C" class="header-logo__img" /></a>
         <nav class="header-nav" id="navMenu" aria-label="Navigation principale">
           <ul class="header-nav__list">
-            <li><a href="index.html" class="header-nav__link">Accueil</a></li>
-            <li><a href="a-propos.html" class="header-nav__link">À propos</a></li>
+            <li><a data-edit="site_accueil" href="index.html" class="header-nav__link">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html" class="header-nav__link">À propos</a></li>
             <li class="header-nav__item--dropdown">
               <a href="portfolio.html" class="header-nav__link">
                 Portfolio
                 <svg class="header-nav__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               </a>
               <ul class="header-nav__dropdown">
-                <li><a href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
-                <li><a href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
-                <li><a href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
+                <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
+                <li><a data-edit="site_communication_print" href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
+                <li><a data-edit="site_communication_digitale" href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
               </ul>
             </li>
-            <li class="nav-mobile-only"><a href="contact.html" class="header-nav__link">Contact</a></li>
+            <li class="nav-mobile-only"><a data-edit="site_contact" href="contact.html" class="header-nav__link">Contact</a></li>
           </ul>
         </nav>
         <div class="header-right">
-          <a href="contact.html" class="btn-contact-bubble">Contact</a>
+          <a data-edit="site_contact" href="contact.html" class="btn-contact-bubble">Contact</a>
           <button class="header-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
       </div>
@@ -58,71 +60,71 @@
       <div class="legal-page__inner">
 
         <header class="legal-page__header">
-          <span class="section-label">Légal</span>
-          <h1 class="section-title">Politique de confidentialité</h1>
+          <span data-edit="legal" class="section-label">Légal</span>
+          <h1 data-edit="politique_de_confidentialite" class="section-title">Politique de confidentialité</h1>
         </header>
 
         <div class="legal-content">
 
-          <h2>Responsable du traitement</h2>
+          <h2 data-edit="responsable_du_traitement">Responsable du traitement</h2>
           <p>
             Cléa LAUBIER — Utopi'C<br />
-            Email : <a href="mailto:contact@utopi-c.com">contact@utopi-c.com</a>
+            Email : <a data-edit="contact_email" data-edit-link="mailto" href="mailto:contact@utopi-c.com">contact@utopi-c.com</a>
           </p>
 
-          <h2>Données collectées</h2>
-          <p>Lors de l'utilisation du formulaire de contact, les données suivantes sont collectées :</p>
+          <h2 data-edit="donnees_collectees">Données collectées</h2>
+          <p data-edit="lors_de_l_utilisation_du">Lors de l'utilisation du formulaire de contact, les données suivantes sont collectées :</p>
           <ul>
-            <li>Prénom et nom</li>
-            <li>Adresse email</li>
-            <li>Téléphone (optionnel)</li>
-            <li>Nom de l'entreprise (optionnel)</li>
-            <li>Pays</li>
-            <li>Contenu du message</li>
+            <li data-edit="prenom_et_nom">Prénom et nom</li>
+            <li data-edit="adresse_email">Adresse email</li>
+            <li data-edit="telephone_optionnel">Téléphone (optionnel)</li>
+            <li data-edit="nom_de_l_entreprise_optionnel">Nom de l'entreprise (optionnel)</li>
+            <li data-edit="pays">Pays</li>
+            <li data-edit="contenu_du_message">Contenu du message</li>
           </ul>
           <p>
-            Ces données sont transmises via le service <strong>Formspree</strong> (formspree.io) et ne sont utilisées qu'aux fins de répondre à votre demande.
+            Ces données sont transmises via le service <strong data-edit="formspree">Formspree</strong> (formspree.io) et ne sont utilisées qu'aux fins de répondre à votre demande.
           </p>
 
-          <h2>Finalité et base légale</h2>
-          <p>
+          <h2 data-edit="finalite_et_base_legale">Finalité et base légale</h2>
+          <p data-edit="le_traitement_de_vos_donnees">
             Le traitement de vos données repose sur votre consentement (article 6.1.a du RGPD), exprimé lors de l'envoi du formulaire. Vos données sont traitées uniquement pour répondre à votre message.
           </p>
 
-          <h2>Durée de conservation</h2>
-          <p>
+          <h2 data-edit="duree_de_conservation">Durée de conservation</h2>
+          <p data-edit="les_donnees_sont_conservees_le">
             Les données sont conservées le temps nécessaire au traitement de la demande, et au maximum 3 ans à compter du dernier contact.
           </p>
 
-          <h2>Destinataires des données</h2>
-          <p>
+          <h2 data-edit="destinataires_des_donnees">Destinataires des données</h2>
+          <p data-edit="vos_donnees_sont_transmises_a">
             Vos données sont transmises à Cléa LAUBIER / Utopi'C et au prestataire technique Formspree, Inc. (États-Unis), qui traite les données de formulaire de manière sécurisée conformément au RGPD.
           </p>
 
-          <h2>Vos droits</h2>
-          <p>Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
+          <h2 data-edit="vos_droits">Vos droits</h2>
+          <p data-edit="conformement_au_rgpd_et_a">Conformément au RGPD et à la loi Informatique et Libertés, vous disposez des droits suivants :</p>
           <ul>
-            <li>Droit d'accès à vos données</li>
-            <li>Droit de rectification</li>
-            <li>Droit à l'effacement (droit à l'oubli)</li>
-            <li>Droit à la limitation du traitement</li>
-            <li>Droit d'opposition</li>
-            <li>Droit à la portabilité</li>
+            <li data-edit="droit_d_acces_a_vos">Droit d'accès à vos données</li>
+            <li data-edit="droit_de_rectification">Droit de rectification</li>
+            <li data-edit="droit_a_l_effacement_droit">Droit à l'effacement (droit à l'oubli)</li>
+            <li data-edit="droit_a_la_limitation_du">Droit à la limitation du traitement</li>
+            <li data-edit="droit_d_opposition">Droit d'opposition</li>
+            <li data-edit="droit_a_la_portabilite">Droit à la portabilité</li>
           </ul>
           <p>
-            Pour exercer ces droits, contactez : <a href="mailto:contact@utopi-c.com">contact@utopi-c.com</a>
+            Pour exercer ces droits, contactez : <a data-edit="contact_email" data-edit-link="mailto" href="mailto:contact@utopi-c.com">contact@utopi-c.com</a>
           </p>
           <p>
-            Vous pouvez également introduire une réclamation auprès de la <strong>CNIL</strong> (<a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).
+            Vous pouvez également introduire une réclamation auprès de la <strong data-edit="cnil">CNIL</strong> (<a data-edit="www_cnil_fr" href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).
           </p>
 
-          <h2>Cookies</h2>
-          <p>
+          <h2 data-edit="cookies">Cookies</h2>
+          <p data-edit="ce_site_n_utilise_pas">
             Ce site n'utilise pas de cookies de suivi ou d'analyse. Aucun cookie tiers n'est déposé sur votre terminal.
           </p>
 
-          <h2>Mise à jour</h2>
-          <p>Dernière mise à jour : mai 2026.</p>
+          <h2 data-edit="mise_a_jour">Mise à jour</h2>
+          <p data-edit="derniere_mise_a_jour_mai">Dernière mise à jour : mai 2026.</p>
 
         </div>
 
@@ -135,7 +137,7 @@
       <div class="footer-main__inner">
         <div class="footer-brand">
           <img src="assets/logos/logo-utopic-mini.png" alt="Utopi'C" class="footer-brand__logo" />
-          <p class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
+          <p data-edit="site_cree_avec_passion_communiquez_avec" class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
           <div class="footer-brand__socials">
             <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
             <a href="https://www.facebook.com/profile.php?id=61557195407284" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
@@ -143,27 +145,29 @@
           </div>
         </div>
         <div class="footer-nav-block">
-          <p class="footer-nav-block__title">Navigation</p>
+          <p data-edit="site_navigation" class="footer-nav-block__title">Navigation</p>
           <ul class="footer-nav-block__cols">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a data-edit="site_accueil" href="index.html">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html">À propos</a></li>
+            <li><a data-edit="site_portfolio" href="portfolio.html">Portfolio</a></li>
             <!--<li><a href="tarifs.html">Tarifs</a></li>-->
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="identite-visuelle.html">Identité visuelle</a></li>
-            <li><a href="communication-print.html">Print</a></li>
-            <li><a href="communication-digitale.html">Digitale</a></li>
-            <li><a href="#">Blog / FAQ</a></li>
-            <li><a href="mentions-legales.html">Mentions légales</a></li>
-            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-            <li><a href="cgv.html">CGV</a></li>
+            <li><a data-edit="site_contact" href="contact.html">Contact</a></li>
+            <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html">Identité visuelle</a></li>
+            <li><a data-edit="site_print" href="communication-print.html">Print</a></li>
+            <li><a data-edit="site_digitale" href="communication-digitale.html">Digitale</a></li>
+            <li><a data-edit="site_blog_faq" href="#">Blog / FAQ</a></li>
+            <li><a data-edit="site_mentions_legales" href="mentions-legales.html">Mentions légales</a></li>
+            <li><a data-edit="site_politique_de_confidentialite" href="politique-confidentialite.html">Politique de confidentialité</a></li>
+            <li><a data-edit="site_cgv" href="cgv.html">CGV</a></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="footer-copyright"><p>2026 &copy; UTOPI'C</p></div>
+    <div class="footer-copyright"><p data-edit="site_2026_utopi_c">2026 &copy; UTOPI'C</p></div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/edit-text.js"></script>
+  <script src="js/textes-loader.js"></script>
 </body>
 </html>

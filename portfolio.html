@@ -12,6 +12,8 @@
   <link rel="apple-touch-icon" href="assets/logos/logo-utopic-mini.png" />
   <link rel="stylesheet" href="css/style.css?v=13" />
   <link rel="stylesheet" href="css/portfolio.css?v=14" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-client.js"></script>
 </head>
 <body>
 
@@ -49,8 +51,8 @@
 
         <nav class="header-nav" id="navMenu" aria-label="Navigation principale">
           <ul class="header-nav__list">
-            <li><a href="index.html" class="header-nav__link">Accueil</a></li>
-            <li><a href="a-propos.html" class="header-nav__link">À propos</a></li>
+            <li><a data-edit="site_accueil" href="index.html" class="header-nav__link">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html" class="header-nav__link">À propos</a></li>
             <li class="header-nav__item--dropdown">
               <a href="portfolio.html" class="header-nav__link header-nav__link--active">
                 Portfolio
@@ -59,17 +61,17 @@
                 </svg>
               </a>
               <ul class="header-nav__dropdown">
-                <li><a href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
-                <li><a href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
-                <li><a href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
+                <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html" class="header-nav__dropdown-link">Identité visuelle</a></li>
+                <li><a data-edit="site_communication_print" href="communication-print.html" class="header-nav__dropdown-link">Communication print</a></li>
+                <li><a data-edit="site_communication_digitale" href="communication-digitale.html" class="header-nav__dropdown-link">Communication digitale</a></li>
               </ul>
             </li>
-            <li class="nav-mobile-only"><a href="contact.html" class="header-nav__link">Contact</a></li>
+            <li class="nav-mobile-only"><a data-edit="site_contact" href="contact.html" class="header-nav__link">Contact</a></li>
           </ul>
         </nav>
 
         <div class="header-right">
-          <a href="contact.html" class="btn-contact-bubble">Contact</a>
+          <a data-edit="site_contact" href="contact.html" class="btn-contact-bubble">Contact</a>
           <button class="header-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -87,8 +89,8 @@
       <div class="portfolio-hub__inner">
 
         <header class="portfolio-hub__header">
-          <h1 class="portfolio-hub__title">Portfolio</h1>
-          <p class="portfolio-hub__subtitle">Là où chaque détail transforme une idée en création unique.</p>
+          <h1 data-edit="portfolio" class="portfolio-hub__title">Portfolio</h1>
+          <p data-edit="la_ou_chaque_detail_transforme" class="portfolio-hub__subtitle">Là où chaque détail transforme une idée en création unique.</p>
         </header>
 
         <div class="portfolio-hub__grid">
@@ -97,12 +99,12 @@
             <div class="hub-card__img-wrap">
               <img src="assets/images/presta-identite.jpg" alt="Identité visuelle" loading="lazy" />
               <div class="hub-card__overlay">
-                <span class="hub-card__cta">Découvrir →</span>
+                <span data-edit="decouvrir" class="hub-card__cta">Découvrir →</span>
               </div>
             </div>
             <div class="hub-card__body">
-              <h2 class="hub-card__title">Identité visuelle</h2>
-              <p class="hub-card__sub">L'âme d'une marque</p>
+              <h2 data-edit="identite_visuelle" class="hub-card__title">Identité visuelle</h2>
+              <p data-edit="l_ame_d_une_marque" class="hub-card__sub">L'âme d'une marque</p>
             </div>
           </a>
 
@@ -110,12 +112,12 @@
             <div class="hub-card__img-wrap">
               <img src="assets/images/presta-print.jpg" alt="Communication print" loading="lazy" />
               <div class="hub-card__overlay">
-                <span class="hub-card__cta">Découvrir →</span>
+                <span data-edit="decouvrir" class="hub-card__cta">Découvrir →</span>
               </div>
             </div>
             <div class="hub-card__body">
-              <h2 class="hub-card__title">Print</h2>
-              <p class="hub-card__sub">Un outil puissant, un message percutant</p>
+              <h2 data-edit="print" class="hub-card__title">Print</h2>
+              <p data-edit="un_outil_puissant_un_message" class="hub-card__sub">Un outil puissant, un message percutant</p>
             </div>
           </a>
 
@@ -123,12 +125,12 @@
             <div class="hub-card__img-wrap">
               <img src="assets/images/presta-digitale.jpeg" alt="Communication digitale" loading="lazy" />
               <div class="hub-card__overlay">
-                <span class="hub-card__cta">Découvrir →</span>
+                <span data-edit="decouvrir" class="hub-card__cta">Découvrir →</span>
               </div>
             </div>
             <div class="hub-card__body">
-              <h2 class="hub-card__title">Digitale</h2>
-              <p class="hub-card__sub">De l'idée à l'écran</p>
+              <h2 data-edit="digitale" class="hub-card__title">Digitale</h2>
+              <p data-edit="de_l_idee_a_l" class="hub-card__sub">De l'idée à l'écran</p>
             </div>
           </a>
 
@@ -148,12 +150,12 @@
       <div style="position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; padding:40px 80px; min-height:360px; box-sizing:border-box;">
 
         <div style="width:38%; text-align:center; flex-shrink:0; padding:20px 0;">
-          <h2 class="ps-title" style="font-family:'Bodoni Moda',serif; font-size:1.5rem; font-weight:400; font-style:italic; line-height:1.5; color:#12263e; margin-bottom:28px; text-align:center;">
+          <h2 data-edit="explorez_mes_creations_et_suivez" class="ps-title" style="font-family:'Bodoni Moda',serif; font-size:1.5rem; font-weight:400; font-style:italic; line-height:1.5; color:#12263e; margin-bottom:28px; text-align:center;">
             Explorez mes créations et suivez<br>
             chaque étape de l'aventure<br>
             sur mes réseaux sociaux !
           </h2>
-          <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener"
+          <a data-edit="rejoindre" href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener"
              style="display:inline-block; padding:10px 26px; border:1.5px solid #e9a708; color:#e9a708; font-family:'Montserrat',sans-serif; font-size:13px; font-weight:500; text-decoration:none;">
             Rejoindre ›
           </a>
@@ -178,7 +180,7 @@
 
         <div class="footer-brand">
           <img src="assets/logos/logo-utopic-mini.png" alt="Utopi'C" class="footer-brand__logo" />
-          <p class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
+          <p data-edit="site_cree_avec_passion_communiquez_avec" class="footer-brand__tagline">Crée avec passion<br />Communiquez avec émotion.</p>
           <div class="footer-brand__socials">
             <a href="https://www.instagram.com/utopi.c__" target="_blank" rel="noopener" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -199,20 +201,20 @@
         </div>
 
         <div class="footer-nav-block">
-          <p class="footer-nav-block__title">Navigation</p>
+          <p data-edit="site_navigation" class="footer-nav-block__title">Navigation</p>
           <ul class="footer-nav-block__cols">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À propos</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a data-edit="site_accueil" href="index.html">Accueil</a></li>
+            <li><a data-edit="site_a_propos" href="a-propos.html">À propos</a></li>
+            <li><a data-edit="site_portfolio" href="portfolio.html">Portfolio</a></li>
             <!--<li><a href="tarifs.html">Tarifs</a></li>-->
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="identite-visuelle.html">Identité visuelle</a></li>
-            <li><a href="communication-print.html">Print</a></li>
-            <li><a href="communication-digitale.html">Digitale</a></li>
-            <li><a href="#">Blog / FAQ</a></li>
-            <li><a href="mentions-legales.html">Mentions légales</a></li>
-            <li><a href="politique-confidentialite.html">Politique de confidentialité</a></li>
-            <li><a href="cgv.html">CGV</a></li>
+            <li><a data-edit="site_contact" href="contact.html">Contact</a></li>
+            <li><a data-edit="site_identite_visuelle" href="identite-visuelle.html">Identité visuelle</a></li>
+            <li><a data-edit="site_print" href="communication-print.html">Print</a></li>
+            <li><a data-edit="site_digitale" href="communication-digitale.html">Digitale</a></li>
+            <li><a data-edit="site_blog_faq" href="#">Blog / FAQ</a></li>
+            <li><a data-edit="site_mentions_legales" href="mentions-legales.html">Mentions légales</a></li>
+            <li><a data-edit="site_politique_de_confidentialite" href="politique-confidentialite.html">Politique de confidentialité</a></li>
+            <li><a data-edit="site_cgv" href="cgv.html">CGV</a></li>
           </ul>
         </div>
 
@@ -220,11 +222,13 @@
     </div>
 
     <div class="footer-copyright">
-      <p>2026 &copy; UTOPI'C</p>
+      <p data-edit="site_2026_utopi_c">2026 &copy; UTOPI'C</p>
     </div>
 
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/edit-text.js"></script>
+  <script src="js/textes-loader.js"></script>
 </body>
 </html>
