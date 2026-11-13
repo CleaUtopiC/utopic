@@ -46,7 +46,11 @@
     if (/Failed to fetch|NetworkError/i.test(error.message || '')) {
       return 'Connexion Internet indisponible. Réessayez.';
     }
-    return 'Une erreur est survenue. Réessayez ou contactez Kacper.';
+    if (error.code === 'PGRST205' || error.code === '42P01' || error.code === '42P10') {
+      return "La base de données n'est pas à jour (script SQL manquant). Contactez Kacper.";
+    }
+    const detail = [error.code, error.message].filter(Boolean).join(' – ');
+    return 'Une erreur est survenue. Réessayez ou contactez Kacper.' + (detail ? ` (${detail})` : '');
   }
 
   function confirmDialog(message) {
