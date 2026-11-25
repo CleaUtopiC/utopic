@@ -139,14 +139,14 @@
   margin-bottom: 1.8rem;
 }
 .sub-logos__strip {
-  display: inline-flex;
+  display: flex;
+  width: max-content;
   align-items: center;
   gap: 3rem;
   padding-right: 3rem;
   white-space: nowrap;
-  animation: ticker-scroll 20s linear infinite;
-  will-change: transform;
 }
+.sub-logos__strip.is-ready { animation: ticker-scroll 20s linear infinite; }
 .sub-logos__strip:hover { animation-play-state: paused; }
 .sub-logos__item {
   font-size: 0.75rem;

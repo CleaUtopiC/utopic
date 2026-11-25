@@ -48,8 +48,27 @@
     initCarousel(cfg);
   }
 
+  const CATEGORY_PAGES = {
+    'identite-visuelle': 'identite-visuelle.html',
+    'print': 'communication-print.html',
+    'digital': 'communication-digitale.html'
+  };
+
+  // Ne lit que les vidéos réellement visibles dans le carrousel.
+  function playVisibleVideos(root) {
+    const videos = root ? root.querySelectorAll('video') : [];
+    if (!videos.length || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.play().catch(() => {});
+        else e.target.pause();
+      });
+    }, { threshold: 0.5 });
+    videos.forEach(v => io.observe(v));
+  }
+
   const [projResult, avisResult] = await Promise.allSettled([
-    supabaseClient.from('projets').select('titre, image_url').order('ordre'),
+    supabaseClient.from('projets').select('titre, image_url, video_url, categorie').eq('afficher_accueil', true).order('ordre'),
     supabaseClient.from('avis').select('*').order('ordre')
   ]);
 
@@ -58,10 +77,15 @@
   if (realTrack && projResult.status === 'fulfilled') {
     const { data, error } = projResult.value;
     if (!error && data?.length) {
-      realTrack.innerHTML = data.map(p =>
-        `<li class="carousel__slide"><img src="${url(p.image_url)}" alt="${esc(p.titre)}" loading="lazy" onerror="this.style.display='none'"></li>`
-      ).join('');
+      realTrack.innerHTML = data.map(p => {
+        const media = p.video_url
+          ? `<video src="${url(p.video_url)}" poster="${url(p.image_url)}" muted loop playsinline preload="none" aria-label="${esc(p.titre)}"></video>`
+          : `<img src="${url(p.image_url)}" alt="${esc(p.titre)}" loading="lazy" onerror="this.style.display='none'">`;
+        const href = CATEGORY_PAGES[p.categorie];
+        return `<li class="carousel__slide">${href ? `<a class="carousel__link" href="${href}" aria-label="${esc(p.titre)}">${media}</a>` : media}</li>`;
+      }).join('');
       reinitCarousel({ trackId: 'realTrack', prevId: 'realPrev', nextId: 'realNext', dotsId: 'realDots', autoplay: 4500 });
+      playVisibleVideos(realTrack.closest('.carousel'));
     }
   }
 

@@ -45,6 +45,11 @@
       strip.innerHTML =
         data.map(c => renderItem(c, false)).join('') +
         data.map(c => renderItem(c, true)).join('');
+      // Le défilement (-50 % de la largeur) n'est lancé qu'une fois les logos chargés : largeur finale connue.
+      const settled = Array.from(strip.querySelectorAll('img')).map(img =>
+        img.complete ? Promise.resolve() : new Promise(r => { img.onload = img.onerror = r; })
+      );
+      Promise.all(settled).then(() => requestAnimationFrame(() => strip.classList.add('is-ready')));
     }
   }
 })();

@@ -453,6 +453,8 @@
     $('projetTitre').value = row?.titre || '';
     $('projetDescription').value = row?.description || '';
     $('projetOrdre').value = row ? row.ordre : nextOrdre(projetsOf(cat));
+    $('projetVideo').value = row?.video_url || '';
+    $('projetAccueil').checked = !!row?.afficher_accueil;
     setImage('projet', row?.image_url || null);
     $('projetDialog').showModal();
     $('projetTitre').focus();
@@ -476,9 +478,14 @@
     if (!titre) { errBox.textContent = 'Le titre est obligatoire.'; $('projetTitre').focus(); return; }
     if (!state.imageUrl) { errBox.textContent = 'Ajoutez une image du projet.'; return; }
 
+    const video = $('projetVideo').value.trim();
+    if (video && !/^https:\/\//i.test(video)) { errBox.textContent = 'Le lien de la vidéo doit commencer par https://'; $('projetVideo').focus(); return; }
+
     const payload = {
       categorie,
       titre,
+      video_url: video || null,
+      afficher_accueil: $('projetAccueil').checked,
       description: $('projetDescription').value.trim() || null,
       image_url: state.imageUrl,
       ordre: parseOrdre($('projetOrdre').value, nextOrdre(projetsOf(categorie)))
